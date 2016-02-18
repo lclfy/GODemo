@@ -15,6 +15,21 @@
 		20464C311C75C43600A5E262 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20464C2F1C75C43600A5E262 /* LaunchScreen.storyboard */; };
 		20464C3C1C75C43600A5E262 /* GODemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20464C3B1C75C43600A5E262 /* GODemoTests.m */; };
 		20464C471C75C43600A5E262 /* GODemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20464C461C75C43600A5E262 /* GODemoUITests.m */; };
+		20464C5D1C75D8A600A5E262 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20464C5C1C75D8A600A5E262 /* CoreLocation.framework */; };
+		20464C5F1C75D8AE00A5E262 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20464C5E1C75D8AE00A5E262 /* Security.framework */; };
+		20464C611C75D8B500A5E262 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20464C601C75D8B500A5E262 /* CoreGraphics.framework */; };
+		20464C631C75D8BF00A5E262 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20464C621C75D8BF00A5E262 /* MobileCoreServices.framework */; };
+		20464C651C75D8C800A5E262 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20464C641C75D8C800A5E262 /* CFNetwork.framework */; };
+		20464C671C75D8D000A5E262 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20464C661C75D8D000A5E262 /* CoreTelephony.framework */; };
+		20464C691C75D8DA00A5E262 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20464C681C75D8DA00A5E262 /* SystemConfiguration.framework */; };
+		20464C6B1C75D8E700A5E262 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 20464C6A1C75D8E700A5E262 /* libz.1.2.5.tbd */; };
+		20464C6D1C75D8F000A5E262 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 20464C6C1C75D8F000A5E262 /* libicucore.tbd */; };
+		20464C6F1C75D90700A5E262 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 20464C6E1C75D90700A5E262 /* libsqlite3.tbd */; };
+		20464C711C75D90E00A5E262 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20464C701C75D90E00A5E262 /* AVFoundation.framework */; };
+		20464C731C75D91500A5E262 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20464C721C75D91500A5E262 /* MediaPlayer.framework */; };
+		20464C751C75DBC100A5E262 /* BmobSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20464C741C75DBC100A5E262 /* BmobSDK.framework */; settings = {ASSET_TAGS = (); }; };
+		20464C7E1C75DD4900A5E262 /* TipsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20464C7D1C75DD4900A5E262 /* TipsModel.m */; settings = {ASSET_TAGS = (); }; };
+		20464C841C75FA9A00A5E262 /* TipsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20464C831C75FA9A00A5E262 /* TipsTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +66,23 @@
 		20464C421C75C43600A5E262 /* GODemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GODemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20464C461C75C43600A5E262 /* GODemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GODemoUITests.m; sourceTree = "<group>"; };
 		20464C481C75C43600A5E262 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20464C5C1C75D8A600A5E262 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		20464C5E1C75D8AE00A5E262 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		20464C601C75D8B500A5E262 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		20464C621C75D8BF00A5E262 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		20464C641C75D8C800A5E262 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		20464C661C75D8D000A5E262 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		20464C681C75D8DA00A5E262 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		20464C6A1C75D8E700A5E262 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
+		20464C6C1C75D8F000A5E262 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		20464C6E1C75D90700A5E262 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		20464C701C75D90E00A5E262 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		20464C721C75D91500A5E262 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		20464C741C75DBC100A5E262 /* BmobSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BmobSDK.framework; sourceTree = "<group>"; };
+		20464C7C1C75DD4900A5E262 /* TipsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TipsModel.h; path = ../TipsModel.h; sourceTree = "<group>"; };
+		20464C7D1C75DD4900A5E262 /* TipsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TipsModel.m; path = ../TipsModel.m; sourceTree = "<group>"; };
+		20464C821C75FA9A00A5E262 /* TipsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TipsTableViewController.h; path = ../TipsTableViewController.h; sourceTree = "<group>"; };
+		20464C831C75FA9A00A5E262 /* TipsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TipsTableViewController.m; path = ../TipsTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +90,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20464C731C75D91500A5E262 /* MediaPlayer.framework in Frameworks */,
+				20464C711C75D90E00A5E262 /* AVFoundation.framework in Frameworks */,
+				20464C6F1C75D90700A5E262 /* libsqlite3.tbd in Frameworks */,
+				20464C6D1C75D8F000A5E262 /* libicucore.tbd in Frameworks */,
+				20464C6B1C75D8E700A5E262 /* libz.1.2.5.tbd in Frameworks */,
+				20464C691C75D8DA00A5E262 /* SystemConfiguration.framework in Frameworks */,
+				20464C751C75DBC100A5E262 /* BmobSDK.framework in Frameworks */,
+				20464C671C75D8D000A5E262 /* CoreTelephony.framework in Frameworks */,
+				20464C651C75D8C800A5E262 /* CFNetwork.framework in Frameworks */,
+				20464C631C75D8BF00A5E262 /* MobileCoreServices.framework in Frameworks */,
+				20464C611C75D8B500A5E262 /* CoreGraphics.framework in Frameworks */,
+				20464C5F1C75D8AE00A5E262 /* Security.framework in Frameworks */,
+				20464C5D1C75D8A600A5E262 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,9 +146,12 @@
 		20464C201C75C43600A5E262 /* GODemo */ = {
 			isa = PBXGroup;
 			children = (
+				20464C581C75D6A100A5E262 /* Models */,
+				20464C571C75D69700A5E262 /* Views */,
 				20464C551C75C49600A5E262 /* AppDelegate */,
 				20464C541C75C48100A5E262 /* Controllers */,
 				20464C561C75C4A000A5E262 /* Others */,
+				20464C591C75D6E900A5E262 /* Frameworks */,
 				20464C211C75C43600A5E262 /* Supporting Files */,
 			);
 			path = GODemo;
@@ -140,6 +188,8 @@
 			children = (
 				20464C271C75C43600A5E262 /* Tab1ViewController.h */,
 				20464C281C75C43600A5E262 /* Tab1ViewController.m */,
+				20464C821C75FA9A00A5E262 /* TipsTableViewController.h */,
+				20464C831C75FA9A00A5E262 /* TipsTableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -162,6 +212,42 @@
 				20464C2A1C75C43600A5E262 /* Main.storyboard */,
 			);
 			name = Others;
+			sourceTree = "<group>";
+		};
+		20464C571C75D69700A5E262 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		20464C581C75D6A100A5E262 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				20464C7C1C75DD4900A5E262 /* TipsModel.h */,
+				20464C7D1C75DD4900A5E262 /* TipsModel.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		20464C591C75D6E900A5E262 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				20464C741C75DBC100A5E262 /* BmobSDK.framework */,
+				20464C721C75D91500A5E262 /* MediaPlayer.framework */,
+				20464C701C75D90E00A5E262 /* AVFoundation.framework */,
+				20464C6E1C75D90700A5E262 /* libsqlite3.tbd */,
+				20464C6C1C75D8F000A5E262 /* libicucore.tbd */,
+				20464C6A1C75D8E700A5E262 /* libz.1.2.5.tbd */,
+				20464C681C75D8DA00A5E262 /* SystemConfiguration.framework */,
+				20464C661C75D8D000A5E262 /* CoreTelephony.framework */,
+				20464C641C75D8C800A5E262 /* CFNetwork.framework */,
+				20464C621C75D8BF00A5E262 /* MobileCoreServices.framework */,
+				20464C601C75D8B500A5E262 /* CoreGraphics.framework */,
+				20464C5E1C75D8AE00A5E262 /* Security.framework */,
+				20464C5C1C75D8A600A5E262 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,6 +386,8 @@
 				20464C291C75C43600A5E262 /* Tab1ViewController.m in Sources */,
 				20464C261C75C43600A5E262 /* AppDelegate.m in Sources */,
 				20464C231C75C43600A5E262 /* main.m in Sources */,
+				20464C841C75FA9A00A5E262 /* TipsTableViewController.m in Sources */,
+				20464C7E1C75DD4900A5E262 /* TipsModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +526,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GODemo",
+				);
 				INFOPLIST_FILE = GODemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lsc.GODemo;
@@ -449,6 +541,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GODemo",
+				);
 				INFOPLIST_FILE = GODemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lsc.GODemo;
@@ -523,6 +619,7 @@
 				20464C4D1C75C43600A5E262 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		20464C4E1C75C43600A5E262 /* Build configuration list for PBXNativeTarget "GODemoTests" */ = {
 			isa = XCConfigurationList;
@@ -531,6 +628,7 @@
 				20464C501C75C43600A5E262 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		20464C511C75C43600A5E262 /* Build configuration list for PBXNativeTarget "GODemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -539,6 +637,7 @@
 				20464C531C75C43600A5E262 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

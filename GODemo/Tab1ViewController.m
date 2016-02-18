@@ -7,6 +7,8 @@
 //
 
 #import "Tab1ViewController.h"
+#import <CoreLocation/CoreLocation.h>
+#import "TipsModel.h"
 
 @interface Tab1ViewController ()
 
@@ -16,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     // Do any additional setup after loading the view, typically from a nib.
 }
 

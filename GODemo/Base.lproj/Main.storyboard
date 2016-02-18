@@ -7,20 +7,96 @@
         <!--Tab1 View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="Tab1ViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="b35-su-jej"/>
+                        <viewControllerLayoutGuide type="bottom" id="hp7-7u-3FV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icH-VI-593">
+                                <rect key="frame" x="66" y="101" width="120" height="30"/>
+                                <animations/>
+                                <state key="normal" title="提醒事项和纪念日"/>
+                                <connections>
+                                    <segue destination="yF2-Cv-fmH" kind="show" id="kMS-kW-8vU"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="575" y="418.5"/>
+        </scene>
+        <!--Tips Table View Controller-->
+        <scene sceneID="JmV-nU-29B">
+            <objects>
+                <tableViewController id="HcS-V8-GT2" customClass="TipsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="RI0-az-PvW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="W8l-UW-jqS">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W8l-UW-jqS" id="ZgB-eT-BIF">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="HcS-V8-GT2" id="ePh-lH-pbe"/>
+                            <outlet property="delegate" destination="HcS-V8-GT2" id="kKy-V6-fsS"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="R5Y-X7-zw3">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" title="返回" id="bb5-D6-rGt"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Ius-KX-xy9">
+                            <rect key="frame" x="236" y="8" width="128" height="29"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
+                            <segments>
+                                <segment title="提醒"/>
+                                <segment title="纪念日"/>
+                            </segments>
+                        </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" title="添加" id="A0O-em-Szf"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZSa-0F-zrH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2491.875" y="405.63380281690138"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Mtd-gN-Q3W">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vlo-8z-Emu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yF2-Cv-fmH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="D5f-k3-0G1"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cjC-9m-5U4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HcS-V8-GT2" kind="relationship" relationship="rootViewController" id="lIa-NY-aqf"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1494.375" y="405.63380281690138"/>
         </scene>
     </scenes>
 </document>
