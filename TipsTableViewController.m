@@ -7,49 +7,96 @@
 //
 
 #import "TipsTableViewController.h"
+#import "TipsModel.h"
+#import <BmobSDK/Bmob.h>
 
-@interface TipsTableViewController ()
+
+@interface TipsTableViewController () <UITableViewDataSource,UITableViewDelegate>
+
+@property (nonatomic,strong) NSMutableArray *tipsArray;
 
 @end
 
 @implementation TipsTableViewController
 
+- (NSMutableArray *)tipsArray{
+    if (_tipsArray == nil) {
+        _tipsArray = [NSMutableArray array];
+    }
+    return _tipsArray;
+}
+
+- (void)getTipsData{
+    BmobQuery *query = [BmobQuery queryWithClassName:@"Tips"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error){
+        
+        for (BmobObject *obj in array) {
+            TipsModel *tips = [[TipsModel alloc]init];
+            tips.tipsName = [obj objectForKey:@"tipsName"];
+            tips.tipsTime = [obj objectForKey:@"tipsTime"];
+            tips.isCompleted = [[obj objectForKey:@"tipsIsCompleted"] boolValue];
+            tips.needToRemind = [[obj objectForKey:@"tipsNeedToRemind"] boolValue];
+            [_tipsArray addObject:tips];
+            
+        }
+        [self.tableView reloadData];
+    }];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self tipsArray];
+    [self getTipsData];
+
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+//返回按钮
+- (IBAction)backBtn:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return _tipsArray.count;
 }
 
-/*
+//BmobQuery *query = [BmobQuery queryWithClassName:@"Tips"];
+//[query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error){
+//    
+//    for (BmobObject *obj in array) {
+//        TipsModel *tips = [[TipsModel alloc]init];
+//        tips.tipsName = [obj objectForKey:@"tipsName"];
+//        tips.tipsTime = [obj objectForKey:@"tipsTime"];
+//        tips.isCompleted = [[obj objectForKey:@"tipsIsCompleted"] boolValue];
+//        tips.needToRemind = [[obj objectForKey:@"tipsNeedToRemind"] boolValue];
+//        [tipsArray addObject:tips];
+//        
+//    }
+//}];
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Tips"];
     
-    // Configure the cell...
-    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Tips"];
+    }
+
+    TipsModel *tips = _tipsArray[indexPath.row];
+    cell.textLabel.text = tips.tipsName;
+    cell.detailTextLabel.text = tips.tipsTime;
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

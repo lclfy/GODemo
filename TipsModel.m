@@ -11,37 +11,26 @@
 
 @implementation TipsModel
 
-+ (void)saveUserInfo:(NSString *)name detail:(NSString *)detail userName:(NSString *)userName{
-    BmobObject *tips = [BmobObject objectWithClassName:@"_User1"];
-    [tips setObject:userName forKey:@"UserName"];
-    [tips setObject:name forKey:@"name"];
-    [tips setObject:detail forKey:@"detail"];
-    
+
++ (void)saveTips:(NSMutableArray *)tipsArray{
+    BmobObject *tips = [BmobObject objectWithClassName:@"Tips"];
+    for (TipsModel *tip in tipsArray) {
+        [tips setObject:tip.tipsName forKey:@"tipsName"];
+        [tips setObject:tip.tipsTime forKey:@"tipsTime"];
+        [tips setObject:[NSNumber numberWithBool:tip.isCompleted] forKey:@"tipsIsCompleted"];
+        [tips setObject:[NSNumber numberWithBool:tip.needToRemind] forKey:@"tipsNeedToRemind"];
+        
+    }
     [tips saveInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error){
         if (isSuccessful) {
             NSLog(@"Success!");
-        }else{
-            NSLog(@"Fail");
+        }else if (error != nil){
+            NSLog(@"%@",error);
         }
     }];
 }
 
 
-+ (void)getUserInfo{
-    BmobQuery *query = [BmobQuery queryWithClassName:@"User1"];
-    
-    [query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error){
-        
-        for (BmobObject *obj in array) {
-            static int i = 0;
-            NSString *name = [obj objectForKey:@"name"];
-            NSString *detail = [obj objectForKey:@"detail"];
-            NSLog(@"%d --- 名字：%@ , 详情： %@", i , name , detail);
-            i++;
-        }
-    }];
-    
-}
 
 
 
