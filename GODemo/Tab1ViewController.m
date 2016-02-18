@@ -6,13 +6,13 @@
 //  Copyright © 2016年 罗思聪. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "Tab1ViewController.h"
 
-@interface ViewController ()
+@interface Tab1ViewController ()
 
 @end
 
-@implementation ViewController
+@implementation Tab1ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
