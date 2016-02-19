@@ -9,6 +9,7 @@
 #import "TipsTableViewController.h"
 #import "TipsModel.h"
 #import <BmobSDK/Bmob.h>
+#import "AddEditTipsViewController.h"
 
 
 @interface TipsTableViewController () <UITableViewDataSource,UITableViewDelegate>
@@ -98,25 +99,44 @@
 }
 
 
-/*
-// Override to support conditional editing of the table view.
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
-// Override to support editing the table view.
+
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
+
+
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"AddTips"]) {
+        UINavigationController *naviCon = segue.destinationViewController;
+//        AddEditTipsViewController *controller = (AddEditTipsViewController *)naviCon.topViewController;
+        
+    }else if ([segue.identifier isEqualToString:@"EditTips"]){
+        UINavigationController *naviCon = segue.destinationViewController;
+//        AddEditTipsViewController *controller = (AddEditTipsViewController *)naviCon.topViewController;
+        naviCon.title = @"修改提醒";
+    }
+
+    
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+
+
 
 /*
 // Override to support rearranging the table view.
@@ -131,15 +151,4 @@
     return YES;
 }
 */
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end
