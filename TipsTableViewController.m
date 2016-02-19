@@ -12,7 +12,7 @@
 #import "AddEditTipsViewController.h"
 
 
-@interface TipsTableViewController () <UITableViewDataSource,UITableViewDelegate>
+@interface TipsTableViewController () <UITableViewDataSource,UITableViewDelegate,AddEditTipsViewControllerDelegate>
 
 @property (nonatomic,strong) NSMutableArray *tipsArray;
 
@@ -116,6 +116,23 @@
     }   
 }
 
+#pragma mark - 添加/修改内部数据的代理方法
+
+- (void)AddEditTipsViewController:(AddEditTipsViewController *)controller didFinishAdding:(TipsModel *)tips{
+    
+    [self.tipsArray addObject:tips];
+    [self.tableView reloadData];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)AddEditTipsViewController:(AddEditTipsViewController *)controller didFinishEditing:(TipsModel *)tips{
+    
+    NSInteger index = [_tipsArray indexOfObject:tips];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    [self.tableView reloadData];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 #pragma mark - Navigation
@@ -123,12 +140,18 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"AddTips"]) {
         UINavigationController *naviCon = segue.destinationViewController;
-//        AddEditTipsViewController *controller = (AddEditTipsViewController *)naviCon.topViewController;
+        AddEditTipsViewController *controller = (AddEditTipsViewController *)naviCon.topViewController;
+        controller.delegate = self;
+        controller.tipsToEdit = nil;
+        
         
     }else if ([segue.identifier isEqualToString:@"EditTips"]){
         UINavigationController *naviCon = segue.destinationViewController;
-//        AddEditTipsViewController *controller = (AddEditTipsViewController *)naviCon.topViewController;
-        naviCon.title = @"修改提醒";
+        AddEditTipsViewController *controller = (AddEditTipsViewController *)naviCon.topViewController;
+        controller.delegate = self;
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        controller.tipsToEdit = _tipsArray[indexPath.row];
+        
     }
 
     
@@ -151,4 +174,7 @@
     return YES;
 }
 */
+
+
+
 @end

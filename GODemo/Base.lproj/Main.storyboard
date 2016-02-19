@@ -55,7 +55,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="54M-qD-Di8">
-                                                    <rect key="frame" x="8" y="7" width="584" height="30"/>
+                                                    <rect key="frame" x="18" y="7" width="584" height="30"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -65,9 +65,17 @@
                                             <constraints>
                                                 <constraint firstItem="54M-qD-Di8" firstAttribute="trailing" secondItem="xtV-nn-EN4" secondAttribute="trailingMargin" id="FhX-lr-3uv"/>
                                                 <constraint firstItem="54M-qD-Di8" firstAttribute="leading" secondItem="xtV-nn-EN4" secondAttribute="leadingMargin" id="Ic1-6A-jg8"/>
+                                                <constraint firstItem="54M-qD-Di8" firstAttribute="trailing" secondItem="xtV-nn-EN4" secondAttribute="trailingMargin" constant="10" id="fBm-wz-mds"/>
+                                                <constraint firstItem="54M-qD-Di8" firstAttribute="leading" secondItem="xtV-nn-EN4" secondAttribute="leadingMargin" constant="10" id="lct-sm-M1M"/>
                                                 <constraint firstItem="54M-qD-Di8" firstAttribute="top" secondItem="xtV-nn-EN4" secondAttribute="topMargin" constant="-1" id="lyJ-gi-FO0"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="54M-qD-Di8" secondAttribute="bottom" constant="-1.5" id="pE6-qe-uep"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="FhX-lr-3uv"/>
+                                                    <exclude reference="Ic1-6A-jg8"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
@@ -129,12 +137,17 @@
                                 <action selector="cancelBtn:" destination="B8r-t8-zea" id="YX1-Bc-gAR"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="完成" id="bmY-GE-FkJ">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="完成" id="bmY-GE-FkJ">
                             <connections>
                                 <action selector="doneBtn:" destination="B8r-t8-zea" id="5Jz-vf-yQO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="doneBtn" destination="bmY-GE-FkJ" id="xUY-DP-Tcs"/>
+                        <outlet property="remindSwitchControl" destination="flu-CJ-0T1" id="LXg-eZ-n4Z"/>
+                        <outlet property="textField" destination="54M-qD-Di8" id="mq8-hc-Wew"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cNC-1B-qnd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -143,7 +156,6 @@
         <!--Tips Table View Controller-->
         <scene sceneID="JmV-nU-29B">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZSa-0F-zrH" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="HcS-V8-GT2" customClass="TipsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="NWt-OL-4Fz">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -206,6 +218,7 @@
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZSa-0F-zrH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1745" y="-229"/>
         </scene>

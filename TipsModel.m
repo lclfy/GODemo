@@ -11,7 +11,7 @@
 
 @implementation TipsModel
 
-
+//将tips存储到网络，读取方法在对应的Tips-viewController里面
 + (void)saveTips:(NSMutableArray *)tipsArray{
     BmobObject *tips = [BmobObject objectWithClassName:@"Tips"];
     for (TipsModel *tip in tipsArray) {

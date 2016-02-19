@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AddEditTipsViewController.h"
 
-@interface TipsTableViewController : UITableViewController
+
+@interface TipsTableViewController : UITableViewController <AddEditTipsViewControllerDelegate>
 
 @end
