@@ -149,7 +149,7 @@
         UINavigationController *naviCon = segue.destinationViewController;
         AddEditTipsViewController *controller = (AddEditTipsViewController *)naviCon.topViewController;
         controller.delegate = self;
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         controller.tipsToEdit = _tipsArray[indexPath.row];
         
     }
