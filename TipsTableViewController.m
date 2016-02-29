@@ -70,6 +70,24 @@
     
 }
 
+- (void)deleteTipsData:(NSIndexPath *)indexPath{
+    BmobQuery *bquery = [BmobQuery queryWithClassName:@"Tips"];
+    TipsModel *tip = _tipsArray[indexPath.row];
+    [bquery getObjectInBackgroundWithId:tip.tipsId block:^(BmobObject *object,NSError *error){
+        if (error) {
+            NSLog(@"-删除出错 %@",error);
+        }else{
+            if (object) {
+                [object deleteInBackground];
+            }
+        }
+    }];
+}
+
+
+
+#pragma -mark viewDidLoad
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self tipsArray];
@@ -161,7 +179,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [_tipsArray removeObjectAtIndex:indexPath.row];
-        
+        [self deleteTipsData:indexPath];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
     }

@@ -24,11 +24,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TipsTableViewController.m"
-            timestampString = "478438704.459552"
+            timestampString = "478440027.191995"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -40,11 +40,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TipsTableViewController.m"
-            timestampString = "478438704.459552"
+            timestampString = "478440027.191995"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
             landmarkName = "-AddEditTipsViewController:didFinishAdding:"
             landmarkType = "5">
          </BreakpointContent>
@@ -98,11 +98,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TipsTableViewController.m"
-            timestampString = "478438704.459552"
+            timestampString = "478440027.191995"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "-AddEditTipsViewController:didFinishEditing:"
             landmarkType = "5">
          </BreakpointContent>
@@ -114,11 +114,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TipsTableViewController.m"
-            timestampString = "478438704.459552"
+            timestampString = "478440027.191995"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "-AddEditTipsViewController:didFinishEditing:"
             landmarkType = "5">
          </BreakpointContent>
