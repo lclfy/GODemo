@@ -11,15 +11,14 @@
 @interface TipsModel : NSObject
 //提醒事项的数据模型
 
-//提醒事项里面的四个属性，分别是提醒名字，提醒时间，是否完成，需要提醒fou
+//提醒事项里面的四个属性，分别是提醒名字，提醒时间，是否完成，需要提醒，ID
 @property (nonatomic,copy) NSString *tipsName;
-@property (nonatomic,copy) NSString *tipsTime;
 @property (nonatomic,assign) BOOL isCompleted;
 @property (nonatomic,assign) BOOL needToRemind;
+@property (nonatomic,copy) NSDate *dueDate;
+@property (nonatomic,copy) NSString *tipsId;
 
-//存储和获取Tips
-+ (void)saveTips:(NSMutableArray *)tipsArray;
-
-
+//存储和获取Tips，从数组获取
++ (void)saveTipsArray:(NSMutableArray *)tipsArray;
 
 @end

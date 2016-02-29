@@ -17,7 +17,28 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+//    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:10];
+//    UILocalNotification *localNotification = [[UILocalNotification alloc]init];
+//    localNotification.fireDate = date;
+//    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+//    localNotification.alertBody = @"2016年到了!";
+//    localNotification.soundName = UILocalNotificationDefaultSoundName;
+//    
+//    if ([UIDevice currentDevice].systemVersion.floatValue > 8.0) {
+//        
+//        UIUserNotificationSettings *setting = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeAlert categories:nil];
+//        
+//        [[UIApplication sharedApplication] registerUserNotificationSettings:setting];
+//        
+//    }
+//    
+//    [[UIApplication sharedApplication]scheduleLocalNotification:localNotification];
+    
     return YES;
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
+    NSLog(@"收到通知:%@",notification);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[AddEditTipsViewController textChanged]:AddEditTipsViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[TipsTableViewController tableView:cellForRowAtIndexPath:]:TipsTableViewController.m">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

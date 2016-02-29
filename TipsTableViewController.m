@@ -27,28 +27,67 @@
     return _tipsArray;
 }
 
+#pragma mark - 对服务器数据进行操作
+
 - (void)getTipsData{
     BmobQuery *query = [BmobQuery queryWithClassName:@"Tips"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error){
-        
+        if (error != nil) {
+            NSLog(@"%@",error);
+        }
         for (BmobObject *obj in array) {
             TipsModel *tips = [[TipsModel alloc]init];
             tips.tipsName = [obj objectForKey:@"tipsName"];
-            tips.tipsTime = [obj objectForKey:@"tipsTime"];
             tips.isCompleted = [[obj objectForKey:@"tipsIsCompleted"] boolValue];
             tips.needToRemind = [[obj objectForKey:@"tipsNeedToRemind"] boolValue];
+            tips.dueDate = [obj objectForKey:@"dueDate"];
+            tips.tipsId = [obj objectForKey:@"objectId"];
             [_tipsArray addObject:tips];
             
         }
         [self.tableView reloadData];
     }];
+    
+}
+
+- (void)editTipsData:(NSIndexPath *)indexPath{
+    BmobQuery *bquery = [BmobQuery queryWithClassName:@"Tips"];
+    TipsModel *tip = _tipsArray[indexPath.row];
+    [bquery getObjectInBackgroundWithId:tip.tipsId block:^(BmobObject *object,NSError *error){
+        if (!error) {
+            if (object) {
+                BmobObject *tips = [BmobObject objectWithoutDatatWithClassName:object.className objectId:object.objectId];
+                [tips setObject:tip.tipsName forKey:@"tipsName"];
+                [tips setObject:[NSNumber numberWithBool:tip.isCompleted] forKey:@"tipsIsCompleted"];
+                [tips setObject:[NSNumber numberWithBool:tip.needToRemind] forKey:@"tipsNeedToRemind"];
+                [tips setObject:tip.dueDate forKey:@"dueDate"];
+                [tips updateInBackground];
+            }
+        }else{
+            NSLog(@"-修改出错 %@",error);
+        }
+    }];
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self tipsArray];
+//    [self getNewArray];
     [self getTipsData];
+    
 
+}
+
+//用来临时往服务器里面添加数据…
+- (void)getNewArray{
+    TipsModel *tip1 = [[TipsModel alloc]init];
+    tip1.tipsName = @"这是一个提醒";
+    tip1.dueDate = [NSDate date];
+    tip1.isCompleted = NO;
+    tip1.needToRemind = NO;
+    [self.tipsArray addObject:tip1];
+    [TipsModel saveTipsArray:_tipsArray];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -84,6 +123,19 @@
 //    }
 //}];
 
+- (NSString *)stringFromDate:(NSDate *)date{
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    
+    //zzz表示时区，zzz可以删除，这样返回的日期字符将不包含时区信息。
+    
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
+    
+    NSString *destDateString = [dateFormatter stringFromDate:date];
+    
+    return destDateString;
+    
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Tips"];
@@ -94,7 +146,7 @@
 
     TipsModel *tips = _tipsArray[indexPath.row];
     cell.textLabel.text = tips.tipsName;
-    cell.detailTextLabel.text = tips.tipsTime;
+    cell.detailTextLabel.text = [self stringFromDate:tips.dueDate];
     return cell;
 }
 
@@ -108,12 +160,11 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
+        [_tipsArray removeObjectAtIndex:indexPath.row];
         
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+        
+    }
 }
 
 #pragma mark - 添加/修改内部数据的代理方法
@@ -121,6 +172,7 @@
 - (void)AddEditTipsViewController:(AddEditTipsViewController *)controller didFinishAdding:(TipsModel *)tips{
     
     [self.tipsArray addObject:tips];
+    [TipsModel saveTipsArray:_tipsArray];
     [self.tableView reloadData];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -129,8 +181,13 @@
     
     NSInteger index = [_tipsArray indexOfObject:tips];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    [self editTipsData:indexPath];
+//    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     [self.tableView reloadData];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)AddEditTipsViewControllerDidCancel:(AddEditTipsViewController *)controller{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -154,26 +211,8 @@
         
     }
 
-    
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
 
-
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 
 

@@ -12,13 +12,13 @@
 @implementation TipsModel
 
 //将tips存储到网络，读取方法在对应的Tips-viewController里面
-+ (void)saveTips:(NSMutableArray *)tipsArray{
++ (void)saveTipsArray:(NSMutableArray *)tipsArray{
     BmobObject *tips = [BmobObject objectWithClassName:@"Tips"];
     for (TipsModel *tip in tipsArray) {
         [tips setObject:tip.tipsName forKey:@"tipsName"];
-        [tips setObject:tip.tipsTime forKey:@"tipsTime"];
         [tips setObject:[NSNumber numberWithBool:tip.isCompleted] forKey:@"tipsIsCompleted"];
         [tips setObject:[NSNumber numberWithBool:tip.needToRemind] forKey:@"tipsNeedToRemind"];
+        [tips setObject:tip.dueDate forKey:@"dueDate"];
         
     }
     [tips saveInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error){
@@ -29,6 +29,7 @@
         }
     }];
 }
+
 
 
 

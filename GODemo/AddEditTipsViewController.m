@@ -16,7 +16,10 @@
 
 @end
 
-@implementation AddEditTipsViewController
+@implementation AddEditTipsViewController{
+    NSDate *_dueDate;
+    BOOL _datePickerVisible;
+}
 
 - (TipsModel *)tips{
     if (_tips == nil) {
