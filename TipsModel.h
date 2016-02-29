@@ -18,7 +18,11 @@
 @property (nonatomic,copy) NSDate *dueDate;
 @property (nonatomic,copy) NSString *tipsId;
 
-//存储和获取Tips，从数组获取
+//存储，修改，删除
 + (void)saveTipsArray:(NSMutableArray *)tipsArray;
+
++ (void)editTipsData:(NSIndexPath *)indexPath allTips:(NSMutableArray *)tipsArray;
+
++ (void)deleteTipsData:(NSIndexPath *)indexPath allTips:(NSMutableArray *)tipsArray;
 
 @end

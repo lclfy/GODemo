@@ -50,40 +50,6 @@
     
 }
 
-- (void)editTipsData:(NSIndexPath *)indexPath{
-    BmobQuery *bquery = [BmobQuery queryWithClassName:@"Tips"];
-    TipsModel *tip = _tipsArray[indexPath.row];
-    [bquery getObjectInBackgroundWithId:tip.tipsId block:^(BmobObject *object,NSError *error){
-        if (!error) {
-            if (object) {
-                BmobObject *tips = [BmobObject objectWithoutDatatWithClassName:object.className objectId:object.objectId];
-                [tips setObject:tip.tipsName forKey:@"tipsName"];
-                [tips setObject:[NSNumber numberWithBool:tip.isCompleted] forKey:@"tipsIsCompleted"];
-                [tips setObject:[NSNumber numberWithBool:tip.needToRemind] forKey:@"tipsNeedToRemind"];
-                [tips setObject:tip.dueDate forKey:@"dueDate"];
-                [tips updateInBackground];
-            }
-        }else{
-            NSLog(@"-修改出错 %@",error);
-        }
-    }];
-    
-}
-
-- (void)deleteTipsData:(NSIndexPath *)indexPath{
-    BmobQuery *bquery = [BmobQuery queryWithClassName:@"Tips"];
-    TipsModel *tip = _tipsArray[indexPath.row];
-    [bquery getObjectInBackgroundWithId:tip.tipsId block:^(BmobObject *object,NSError *error){
-        if (error) {
-            NSLog(@"-删除出错 %@",error);
-        }else{
-            if (object) {
-                [object deleteInBackground];
-            }
-        }
-    }];
-}
-
 
 
 #pragma -mark viewDidLoad
@@ -179,7 +145,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [_tipsArray removeObjectAtIndex:indexPath.row];
-        [self deleteTipsData:indexPath];
+        [TipsModel deleteTipsData:indexPath allTips:_tipsArray];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
     }
@@ -199,7 +165,7 @@
     
     NSInteger index = [_tipsArray indexOfObject:tips];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-    [self editTipsData:indexPath];
+    [TipsModel editTipsData:indexPath allTips:_tipsArray];
 //    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     [self.tableView reloadData];
     [self dismissViewControllerAnimated:YES completion:nil];
