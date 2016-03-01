@@ -60,6 +60,7 @@
 //    [self getNewArray];
     [self getTipsData];
     
+    
 
 }
 
@@ -90,6 +91,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
     return _tipsArray.count;
 }
 
@@ -113,7 +115,7 @@
     
     //zzz表示时区，zzz可以删除，这样返回的日期字符将不包含时区信息。
     
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
+    [dateFormatter setDateFormat:@"YY/MM/dd HH:mm"];
     
     NSString *destDateString = [dateFormatter stringFromDate:date];
     
@@ -130,13 +132,46 @@
 
     TipsModel *tips = _tipsArray[indexPath.row];
     cell.textLabel.text = tips.tipsName;
+    //如果需要提醒，就显示时间
     if (tips.needToRemind) {
         cell.detailTextLabel.text = [self stringFromDate:tips.dueDate];
+        
     }else{
         cell.detailTextLabel.text = nil;
     }
+    //设置完成和未完成时候的图片
+    if (tips.isCompleted) {
+        cell.imageView.image = [UIImage imageNamed:@"_remind_isCompleted"];
+    }else{
+        cell.imageView.image = [UIImage imageNamed:@"_remind_isNotCompleted"];
+    }
+    
+    //隐藏多余的分隔线
+    [self setExtraCellLineHidden:tableView];
 
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    TipsModel *tips = _tipsArray[indexPath.row];
+    if (tips.isCompleted) {
+        tips.isCompleted = NO;
+    }else{
+        tips.isCompleted = YES;
+    }
+    _tipsArray[indexPath.row] = tips;
+    [TipsModel editTipsData:indexPath allTips:_tipsArray];
+    [self.tableView reloadData];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    TipsModel *tips = _tipsArray[indexPath.row];
+    if (tips.needToRemind) {
+        return 60;
+        
+    }else{
+        return 44;
+    }
 }
 
 
@@ -178,6 +213,19 @@
 
 - (void)AddEditTipsViewControllerDidCancel:(AddEditTipsViewController *)controller{
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - 去掉多余的分隔线
+
+- (void)setExtraCellLineHidden: (UITableView *)tableView{
+    
+    UIView *view = [UIView new];
+    
+    view.backgroundColor = [UIColor clearColor];
+    
+    [tableView setTableFooterView:view];
+    
+    
 }
 
 
