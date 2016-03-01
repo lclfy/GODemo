@@ -130,7 +130,12 @@
 
     TipsModel *tips = _tipsArray[indexPath.row];
     cell.textLabel.text = tips.tipsName;
-    cell.detailTextLabel.text = [self stringFromDate:tips.dueDate];
+    if (tips.needToRemind) {
+        cell.detailTextLabel.text = [self stringFromDate:tips.dueDate];
+    }else{
+        cell.detailTextLabel.text = nil;
+    }
+
     return cell;
 }
 
