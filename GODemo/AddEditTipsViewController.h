@@ -27,7 +27,7 @@
 @property (nonatomic,weak) id<AddEditTipsViewControllerDelegate> delegate;
 @property (nonatomic,strong) TipsModel *tipsToEdit;
 
-
+//是否提醒的开关，和完成按钮
 @property (weak, nonatomic) IBOutlet UISwitch *remindSwitchControl;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneBtn;

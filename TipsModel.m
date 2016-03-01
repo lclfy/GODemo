@@ -55,16 +55,17 @@
 
 + (void)deleteTipsData:(NSIndexPath *)indexPath allTips:(NSMutableArray *)tipsArray{
     BmobQuery *bquery = [BmobQuery queryWithClassName:@"Tips"];
-    TipsModel *tip = tipsArray[indexPath.row];
-    [bquery getObjectInBackgroundWithId:tip.tipsId block:^(BmobObject *object,NSError *error){
-        if (error) {
-            NSLog(@"-删除出错 %@",error);
-        }else{
-            if (object) {
-                [object deleteInBackground];
+        TipsModel *tip = tipsArray[indexPath.row];
+        [bquery getObjectInBackgroundWithId:tip.tipsId block:^(BmobObject *object,NSError *error){
+            if (error) {
+                NSLog(@"-删除出错 %@",error);
+            }else{
+                if (object) {
+                    [object deleteInBackground];
+                }
             }
-        }
-    }];
+        }];
+
 }
 
 
