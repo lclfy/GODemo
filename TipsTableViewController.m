@@ -10,6 +10,7 @@
 #import "TipsModel.h"
 #import <BmobSDK/Bmob.h>
 #import "AddEditTipsViewController.h"
+#import "NoTipsViewCell.h"
 
 
 @interface TipsTableViewController () <UITableViewDataSource,UITableViewDelegate,AddEditTipsViewControllerDelegate>
@@ -60,7 +61,6 @@
 //    [self getNewArray];
     [self getTipsData];
     
-    
 
 }
 
@@ -84,6 +84,14 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+//删除分割线
+- (void)setExtraCellLineHidden: (UITableView *)tableView
+{
+    UIView *view = [UIView new];
+    view.backgroundColor = [UIColor clearColor];
+    [tableView setTableFooterView:view];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -91,6 +99,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+
+    if (_tipsArray.count != 0) {
+        return _tipsArray.count;
+    }else{
+        return 1;
+    }
     
     return _tipsArray.count;
 }
@@ -115,7 +129,7 @@
     
     //zzz表示时区，zzz可以删除，这样返回的日期字符将不包含时区信息。
     
-    [dateFormatter setDateFormat:@"YY/MM/dd HH:mm"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
     
     NSString *destDateString = [dateFormatter stringFromDate:date];
     
@@ -124,60 +138,88 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Tips"];
     
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Tips"];
-    }
-
-    TipsModel *tips = _tipsArray[indexPath.row];
-    cell.textLabel.text = tips.tipsName;
-    //如果需要提醒，就显示时间
-    if (tips.needToRemind) {
-        cell.detailTextLabel.text = [self stringFromDate:tips.dueDate];
+    
+    if (_tipsArray.count != 0) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Tips"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Tips"];
+        }
         
+        TipsModel *tips = _tipsArray[indexPath.row];
+        cell.textLabel.text = tips.tipsName;
+        //如果需要提醒，就显示时间
+        if (tips.needToRemind) {
+            cell.detailTextLabel.text = [self stringFromDate:tips.dueDate];
+            
+        }else{
+            cell.detailTextLabel.text = nil;
+        }
+        //设置完成和未完成时候的图片
+        if (tips.isCompleted) {
+            cell.imageView.image = [UIImage imageNamed:@"_remind_isCompleted"];
+        }else{
+            cell.imageView.image = [UIImage imageNamed:@"_remind_isNotCompleted"];
+        }
+        
+        //隐藏多余的分隔线
+        [self setExtraCellLineHidden:tableView];
+        return cell;
     }else{
-        cell.detailTextLabel.text = nil;
+        //如果没有任何提醒，则设置一个空白页面，页面使用NoTipsViewCell
+        static NSString *CellIdentifier = @"NoTips";
+        NoTipsViewCell *cell = (NoTipsViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil)
+        {
+            cell= (NoTipsViewCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"NoTipsViewCell" owner:self options:nil]  lastObject];
+        }
+        //不能滑，不能选
+        tableView.scrollEnabled = NO;
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        return cell;
     }
-    //设置完成和未完成时候的图片
-    if (tips.isCompleted) {
-        cell.imageView.image = [UIImage imageNamed:@"_remind_isCompleted"];
-    }else{
-        cell.imageView.image = [UIImage imageNamed:@"_remind_isNotCompleted"];
-    }
-    
-    //隐藏多余的分隔线
-    [self setExtraCellLineHidden:tableView];
 
-    return cell;
 }
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    TipsModel *tips = _tipsArray[indexPath.row];
-    if (tips.isCompleted) {
-        tips.isCompleted = NO;
-    }else{
-        tips.isCompleted = YES;
+    if (_tipsArray.count != 0) {
+        TipsModel *tips = _tipsArray[indexPath.row];
+        if (tips.isCompleted) {
+            tips.isCompleted = NO;
+        }else{
+            tips.isCompleted = YES;
+        }
+        _tipsArray[indexPath.row] = tips;
+        [TipsModel editTipsData:indexPath allTips:_tipsArray];
+        [self.tableView reloadData];
     }
-    _tipsArray[indexPath.row] = tips;
-    [TipsModel editTipsData:indexPath allTips:_tipsArray];
-    [self.tableView reloadData];
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    TipsModel *tips = _tipsArray[indexPath.row];
-    if (tips.needToRemind) {
-        return 60;
-        
+    if (_tipsArray.count != 0) {
+        TipsModel *tips = _tipsArray[indexPath.row];
+        if (tips.needToRemind) {
+            return 60;
+            
+        }else{
+            return 44;
+        }
     }else{
-        return 44;
+        return tableView.bounds.size.height;
     }
+
 }
 
 
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
+    if (_tipsArray.count != 0) {
+        return YES;
+    }else{
+        return NO;
+    }
 }
 
 
@@ -185,9 +227,9 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [TipsModel deleteTipsData:indexPath allTips:_tipsArray];
+//        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         [_tipsArray removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        
+        [tableView reloadData];
     }
 }
 
@@ -213,19 +255,6 @@
 
 - (void)AddEditTipsViewControllerDidCancel:(AddEditTipsViewController *)controller{
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-#pragma mark - 去掉多余的分隔线
-
-- (void)setExtraCellLineHidden: (UITableView *)tableView{
-    
-    UIView *view = [UIView new];
-    
-    view.backgroundColor = [UIColor clearColor];
-    
-    [tableView setTableFooterView:view];
-    
-    
 }
 
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2028905F1C871FB4005BF76C /* NoTipsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2028905D1C871FB4005BF76C /* NoTipsViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		202890601C871FB4005BF76C /* NoTipsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2028905E1C871FB4005BF76C /* NoTipsViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		20464C231C75C43600A5E262 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 20464C221C75C43600A5E262 /* main.m */; };
 		20464C261C75C43600A5E262 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20464C251C75C43600A5E262 /* AppDelegate.m */; };
 		20464C291C75C43600A5E262 /* Tab1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20464C281C75C43600A5E262 /* Tab1ViewController.m */; };
@@ -51,6 +53,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2028905C1C871FB4005BF76C /* NoTipsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoTipsViewCell.h; sourceTree = "<group>"; };
+		2028905D1C871FB4005BF76C /* NoTipsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoTipsViewCell.m; sourceTree = "<group>"; };
+		2028905E1C871FB4005BF76C /* NoTipsViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoTipsViewCell.xib; sourceTree = "<group>"; };
 		20464C1E1C75C43600A5E262 /* GODemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GODemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20464C221C75C43600A5E262 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		20464C241C75C43600A5E262 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -222,6 +227,9 @@
 		20464C571C75D69700A5E262 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2028905C1C871FB4005BF76C /* NoTipsViewCell.h */,
+				2028905D1C871FB4005BF76C /* NoTipsViewCell.m */,
+				2028905E1C871FB4005BF76C /* NoTipsViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -364,6 +372,7 @@
 				20464C311C75C43600A5E262 /* LaunchScreen.storyboard in Resources */,
 				20464C2E1C75C43600A5E262 /* Assets.xcassets in Resources */,
 				20464C2C1C75C43600A5E262 /* Main.storyboard in Resources */,
+				202890601C871FB4005BF76C /* NoTipsViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +397,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2028905F1C871FB4005BF76C /* NoTipsViewCell.m in Sources */,
 				20464C291C75C43600A5E262 /* Tab1ViewController.m in Sources */,
 				20464C261C75C43600A5E262 /* AppDelegate.m in Sources */,
 				20D9C9C81C77338000A0A017 /* AddEditTipsViewController.m in Sources */,
