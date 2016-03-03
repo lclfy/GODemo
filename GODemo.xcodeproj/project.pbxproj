@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2028905F1C871FB4005BF76C /* NoTipsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2028905D1C871FB4005BF76C /* NoTipsViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		202890601C871FB4005BF76C /* NoTipsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2028905E1C871FB4005BF76C /* NoTipsViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		2028906B1C873079005BF76C /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2028906A1C873079005BF76C /* ProgressHUD.bundle */; settings = {ASSET_TAGS = (); }; };
+		2028906E1C87307D005BF76C /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2028906D1C87307D005BF76C /* ProgressHUD.m */; settings = {ASSET_TAGS = (); }; };
 		20464C231C75C43600A5E262 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 20464C221C75C43600A5E262 /* main.m */; };
 		20464C261C75C43600A5E262 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20464C251C75C43600A5E262 /* AppDelegate.m */; };
 		20464C291C75C43600A5E262 /* Tab1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20464C281C75C43600A5E262 /* Tab1ViewController.m */; };
@@ -33,6 +35,8 @@
 		20464C7E1C75DD4900A5E262 /* TipsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20464C7D1C75DD4900A5E262 /* TipsModel.m */; settings = {ASSET_TAGS = (); }; };
 		20464C841C75FA9A00A5E262 /* TipsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20464C831C75FA9A00A5E262 /* TipsTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		20D9C9C81C77338000A0A017 /* AddEditTipsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D9C9C71C77338000A0A017 /* AddEditTipsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		20E785E51C886C8600715BDD /* AnniversaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E785E31C886C8600715BDD /* AnniversaryCell.m */; settings = {ASSET_TAGS = (); }; };
+		20E785E61C886C8600715BDD /* AnniversaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20E785E41C886C8600715BDD /* AnniversaryCell.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +60,9 @@
 		2028905C1C871FB4005BF76C /* NoTipsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoTipsViewCell.h; sourceTree = "<group>"; };
 		2028905D1C871FB4005BF76C /* NoTipsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoTipsViewCell.m; sourceTree = "<group>"; };
 		2028905E1C871FB4005BF76C /* NoTipsViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoTipsViewCell.xib; sourceTree = "<group>"; };
+		2028906A1C873079005BF76C /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
+		2028906C1C87307D005BF76C /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
+		2028906D1C87307D005BF76C /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		20464C1E1C75C43600A5E262 /* GODemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GODemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20464C221C75C43600A5E262 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		20464C241C75C43600A5E262 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -91,6 +98,9 @@
 		20464C831C75FA9A00A5E262 /* TipsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TipsTableViewController.m; path = ../TipsTableViewController.m; sourceTree = "<group>"; };
 		20D9C9C61C77338000A0A017 /* AddEditTipsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEditTipsViewController.h; sourceTree = "<group>"; };
 		20D9C9C71C77338000A0A017 /* AddEditTipsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEditTipsViewController.m; sourceTree = "<group>"; };
+		20E785E21C886C8600715BDD /* AnniversaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnniversaryCell.h; sourceTree = "<group>"; };
+		20E785E31C886C8600715BDD /* AnniversaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnniversaryCell.m; sourceTree = "<group>"; };
+		20E785E41C886C8600715BDD /* AnniversaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnniversaryCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,10 +141,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		20464C151C75C43600A5E262 = {
+		202890611C8728B3005BF76C /* GoDemo */ = {
 			isa = PBXGroup;
 			children = (
 				20464C201C75C43600A5E262 /* GODemo */,
+			);
+			name = GoDemo;
+			sourceTree = "<group>";
+		};
+		202890621C8728E0005BF76C /* 提醒纪念日界面 */ = {
+			isa = PBXGroup;
+			children = (
+				20464C581C75D6A100A5E262 /* Models */,
+				20464C571C75D69700A5E262 /* Views */,
+				20464C541C75C48100A5E262 /* Controllers */,
+				20464C561C75C4A000A5E262 /* Others */,
+			);
+			name = "提醒纪念日界面";
+			sourceTree = "<group>";
+		};
+		202890631C8728F8005BF76C /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				2028906C1C87307D005BF76C /* ProgressHUD.h */,
+				2028906D1C87307D005BF76C /* ProgressHUD.m */,
+			);
+			name = HUD;
+			sourceTree = "<group>";
+		};
+		20464C151C75C43600A5E262 = {
+			isa = PBXGroup;
+			children = (
+				202890611C8728B3005BF76C /* GoDemo */,
 				20464C3A1C75C43600A5E262 /* GODemoTests */,
 				20464C451C75C43600A5E262 /* GODemoUITests */,
 				20464C1F1C75C43600A5E262 /* Products */,
@@ -154,11 +192,9 @@
 		20464C201C75C43600A5E262 /* GODemo */ = {
 			isa = PBXGroup;
 			children = (
-				20464C581C75D6A100A5E262 /* Models */,
-				20464C571C75D69700A5E262 /* Views */,
+				202890631C8728F8005BF76C /* HUD */,
+				202890621C8728E0005BF76C /* 提醒纪念日界面 */,
 				20464C551C75C49600A5E262 /* AppDelegate */,
-				20464C541C75C48100A5E262 /* Controllers */,
-				20464C561C75C4A000A5E262 /* Others */,
 				20464C591C75D6E900A5E262 /* Frameworks */,
 				20464C211C75C43600A5E262 /* Supporting Files */,
 			);
@@ -230,6 +266,9 @@
 				2028905C1C871FB4005BF76C /* NoTipsViewCell.h */,
 				2028905D1C871FB4005BF76C /* NoTipsViewCell.m */,
 				2028905E1C871FB4005BF76C /* NoTipsViewCell.xib */,
+				20E785E21C886C8600715BDD /* AnniversaryCell.h */,
+				20E785E31C886C8600715BDD /* AnniversaryCell.m */,
+				20E785E41C886C8600715BDD /* AnniversaryCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -246,6 +285,7 @@
 		20464C591C75D6E900A5E262 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2028906A1C873079005BF76C /* ProgressHUD.bundle */,
 				20464C741C75DBC100A5E262 /* BmobSDK.framework */,
 				20464C721C75D91500A5E262 /* MediaPlayer.framework */,
 				20464C701C75D90E00A5E262 /* AVFoundation.framework */,
@@ -371,7 +411,9 @@
 			files = (
 				20464C311C75C43600A5E262 /* LaunchScreen.storyboard in Resources */,
 				20464C2E1C75C43600A5E262 /* Assets.xcassets in Resources */,
+				20E785E61C886C8600715BDD /* AnniversaryCell.xib in Resources */,
 				20464C2C1C75C43600A5E262 /* Main.storyboard in Resources */,
+				2028906B1C873079005BF76C /* ProgressHUD.bundle in Resources */,
 				202890601C871FB4005BF76C /* NoTipsViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,12 +439,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20E785E51C886C8600715BDD /* AnniversaryCell.m in Sources */,
 				2028905F1C871FB4005BF76C /* NoTipsViewCell.m in Sources */,
 				20464C291C75C43600A5E262 /* Tab1ViewController.m in Sources */,
 				20464C261C75C43600A5E262 /* AppDelegate.m in Sources */,
 				20D9C9C81C77338000A0A017 /* AddEditTipsViewController.m in Sources */,
 				20464C231C75C43600A5E262 /* main.m in Sources */,
 				20464C841C75FA9A00A5E262 /* TipsTableViewController.m in Sources */,
+				2028906E1C87307D005BF76C /* ProgressHUD.m in Sources */,
 				20464C7E1C75DD4900A5E262 /* TipsModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

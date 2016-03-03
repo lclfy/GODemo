@@ -11,6 +11,8 @@
 #import <BmobSDK/Bmob.h>
 #import "AddEditTipsViewController.h"
 #import "NoTipsViewCell.h"
+#import "ProgressHUD.h"
+#import "AnniversaryCell.h"
 
 
 @interface TipsTableViewController () <UITableViewDataSource,UITableViewDelegate,AddEditTipsViewControllerDelegate>
@@ -33,9 +35,11 @@
 - (void)getTipsData{
     BmobQuery *query = [BmobQuery queryWithClassName:@"Tips"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error){
+    
         if (error != nil) {
+            [ProgressHUD showError:@"无网络"];
             NSLog(@"%@",error);
-        }
+        }else{
         for (BmobObject *obj in array) {
             TipsModel *tips = [[TipsModel alloc]init];
             tips.tipsName = [obj objectForKey:@"tipsName"];
@@ -46,8 +50,15 @@
             [_tipsArray addObject:tips];
             
         }
+        }
         [self.tableView reloadData];
+        //延时1秒消失
+        double delayInSeconds = 1.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [ProgressHUD dismiss]; });
     }];
+
     
 }
 
@@ -168,10 +179,14 @@
     }else{
         //如果没有任何提醒，则设置一个空白页面，页面使用NoTipsViewCell
         static NSString *CellIdentifier = @"NoTips";
-        NoTipsViewCell *cell = (NoTipsViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (cell == nil)
-        {
-            cell= (NoTipsViewCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"NoTipsViewCell" owner:self options:nil]  lastObject];
+//        NoTipsViewCell *cell = (NoTipsViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//        if (cell == nil)
+//        {
+//            cell= (NoTipsViewCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"NoTipsViewCell" owner:self options:nil]  lastObject];
+//        }
+        AnniversaryCell *cell = (AnniversaryCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = (AnniversaryCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"AnniversaryCell" owner:self options:nil]  lastObject];
         }
         //不能滑，不能选
         tableView.scrollEnabled = NO;
@@ -199,15 +214,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (_tipsArray.count != 0) {
-        TipsModel *tips = _tipsArray[indexPath.row];
-        if (tips.needToRemind) {
-            return 60;
-            
-        }else{
-            return 44;
-        }
+        return 50;
     }else{
-        return tableView.bounds.size.height;
+        return 100;
     }
 
 }

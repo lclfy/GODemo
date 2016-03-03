@@ -8,6 +8,7 @@
 
 #import "TipsModel.h"
 #import <BmobSDK/Bmob.h>
+#import "ProgressHUD.h"
 
 @implementation TipsModel
 
@@ -47,8 +48,19 @@
                 [tips updateInBackground];
             }
         }else{
+            static int i = 0;
+            if (i < 5) {
+                [self editTipsData:indexPath allTips:tipsArray];
+                NSLog(@"%d",i);
+            }else{
+                [ProgressHUD showError:@"编辑出错，请重试"];
+            }
             NSLog(@"-修改出错 %@",error);
         }
+        double delayInSeconds = 1.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [ProgressHUD dismiss]; });
     }];
     
 }
@@ -58,12 +70,16 @@
         TipsModel *tip = tipsArray[indexPath.row];
         [bquery getObjectInBackgroundWithId:tip.tipsId block:^(BmobObject *object,NSError *error){
             if (error) {
-                NSLog(@"-删除出错 %@",error);
+                    [ProgressHUD showError:@"删除出错，请重试"];
             }else{
                 if (object) {
                     [object deleteInBackground];
                 }
             }
+            double delayInSeconds = 1.0;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                [ProgressHUD dismiss]; });
         }];
 
 }
