@@ -13,11 +13,13 @@
 #import "NoTipsViewCell.h"
 #import "ProgressHUD.h"
 #import "AnniversaryCell.h"
+#import "AnniversaryModel.h"
 
 
 @interface TipsTableViewController () <UITableViewDataSource,UITableViewDelegate,AddEditTipsViewControllerDelegate>
 
 @property (nonatomic,strong) NSMutableArray *tipsArray;
+@property (nonatomic,strong) NSMutableArray *anniversaryArray;
 
 @end
 
@@ -30,7 +32,14 @@
     return _tipsArray;
 }
 
-#pragma mark - 对服务器数据进行操作
+- (NSMutableArray *)anniversaryArray{
+    if (_anniversaryArray == nil) {
+        _anniversaryArray = [NSMutableArray array];
+    }
+    return _anniversaryArray;
+}
+
+#pragma mark - 对服务器数据进行操作/提醒/纪念日
 
 - (void)getTipsData{
     BmobQuery *query = [BmobQuery queryWithClassName:@"Tips"];
@@ -62,6 +71,35 @@
     
 }
 
+- (void)getAnniversaryData{
+    BmobQuery *query = [BmobQuery queryWithClassName:@"Anniversary"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error){
+        
+        if (error != nil) {
+            [ProgressHUD showError:@"无网络"];
+            NSLog(@"%@",error);
+        }else{
+            for (BmobObject *obj in array) {
+                AnniversaryModel *anniversary = [[AnniversaryModel alloc]init];
+                anniversary.anniversaryName = [obj objectForKey:@"anniversaryName"];
+                anniversary.isDue = [[obj objectForKey:@"anniversaryIsDue"]boolValue];
+                anniversary.dueDate = [obj objectForKey:@"dueDate"];
+                anniversary.anniversaryId = [obj objectForKey:@"objectID"];
+                [_anniversaryArray addObject:anniversary];
+                
+            }
+        }
+        [self.tableView reloadData];
+        //延时1秒消失
+        double delayInSeconds = 1.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [ProgressHUD dismiss]; });
+    }];
+    
+    
+}
+
 
 
 #pragma -mark viewDidLoad
@@ -69,7 +107,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self tipsArray];
-//    [self getNewArray];
+    [self anniversaryArray];
+    [self getNewArray];
     [self getTipsData];
     
 
@@ -77,13 +116,28 @@
 
 //用来临时往服务器里面添加数据…
 - (void)getNewArray{
-    TipsModel *tip1 = [[TipsModel alloc]init];
-    tip1.tipsName = @"这是一个提醒";
-    tip1.dueDate = [NSDate date];
-    tip1.isCompleted = NO;
-    tip1.needToRemind = NO;
-    [self.tipsArray addObject:tip1];
-    [TipsModel saveTipsArray:_tipsArray];
+//    TipsModel *tip1 = [[TipsModel alloc]init];
+//    tip1.tipsName = @"这是一个提醒";
+//    tip1.dueDate = [NSDate date];
+//    tip1.isCompleted = NO;
+//    tip1.needToRemind = NO;
+//    [self.tipsArray addObject:tip1];
+//    [TipsModel saveTipsArray:_tipsArray];
+    
+    AnniversaryModel *anni1 = [[AnniversaryModel alloc]init];
+    anni1.dueDate = [[NSDate alloc]initWithTimeIntervalSinceReferenceDate:400000000];
+    NSDate *now = [NSDate date];
+    if ([anni1.dueDate laterDate:now] == anni1.dueDate ) {
+        //如果更晚的是dueDate，就说明还没有到期，就返回NO
+        anni1.isDue = NO;
+    }else{
+        anni1.isDue = YES;
+    }
+    NSString *name = @"iPhone发布";
+    anni1.anniversaryName = name;
+    [self.anniversaryArray addObject:anni1];
+    [AnniversaryModel saveAnniversaryArray:self.anniversaryArray];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -111,13 +165,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    if (_tipsArray.count != 0) {
-        return _tipsArray.count;
-    }else{
-        return 1;
-    }
-    
-    return _tipsArray.count;
+//    if (_tipsArray.count != 0) {
+//        return _tipsArray.count;
+//    }else{
+//        return 1;
+//    }
+//    
+//    return _tipsArray.count;
+    return [_anniversaryArray count];
 }
 
 //BmobQuery *query = [BmobQuery queryWithClassName:@"Tips"];
@@ -150,97 +205,108 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    //显示提醒事项时
-    if (_tipsArray.count != 0) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Tips"];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Tips"];
-        }
-        
-        TipsModel *tips = _tipsArray[indexPath.row];
-        cell.textLabel.text = tips.tipsName;
-        //如果需要提醒，就显示时间
-        if (tips.needToRemind) {
-            cell.detailTextLabel.text = [self stringFromDate:tips.dueDate];
-            
-        }else{
-            cell.detailTextLabel.text = nil;
-        }
-        //设置完成和未完成时候的图片
-        if (tips.isCompleted) {
-            cell.imageView.image = [UIImage imageNamed:@"_remind_isCompleted"];
-        }else{
-            cell.imageView.image = [UIImage imageNamed:@"_remind_isNotCompleted"];
-        }
-        
-        //隐藏多余的分隔线
-        [self setExtraCellLineHidden:tableView];
-        return cell;
-    }else{
-        //如果没有任何提醒，则设置一个空白页面，页面使用NoTipsViewCell
-        static NSString *CellIdentifier = @"NoTips";
-        NoTipsViewCell *cell = (NoTipsViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (cell == nil)
-        {
-            cell= (NoTipsViewCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"NoTipsViewCell" owner:self options:nil]  lastObject];
-        }
-//        AnniversaryCell *cell = (AnniversaryCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    //显示提醒事项时
+//    if (_tipsArray.count != 0) {
+//        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Tips"];
 //        if (cell == nil) {
-//            cell = (AnniversaryCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"AnniversaryCell" owner:self options:nil]  lastObject];
+//            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Tips"];
 //        }
-        //不能滑，不能选
-        tableView.scrollEnabled = NO;
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        return cell;
+//        
+//        TipsModel *tips = _tipsArray[indexPath.row];
+//        cell.textLabel.text = tips.tipsName;
+//        //如果需要提醒，就显示时间
+//        if (tips.needToRemind) {
+//            cell.detailTextLabel.text = [self stringFromDate:tips.dueDate];
+//            
+//        }else{
+//            cell.detailTextLabel.text = nil;
+//        }
+//        //设置完成和未完成时候的图片
+//        if (tips.isCompleted) {
+//            cell.imageView.image = [UIImage imageNamed:@"_remind_isCompleted"];
+//        }else{
+//            cell.imageView.image = [UIImage imageNamed:@"_remind_isNotCompleted"];
+//        }
+//        
+//        //隐藏多余的分隔线
+//        [self setExtraCellLineHidden:tableView];
+//        return cell;
+//    }else{
+//        //如果没有任何提醒，则设置一个空白页面，页面使用NoTipsViewCell
+//        static NSString *CellIdentifier = @"NoTips";
+//        NoTipsViewCell *cell = (NoTipsViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//        if (cell == nil)
+//        {
+//            cell= (NoTipsViewCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"NoTipsViewCell" owner:self options:nil]  lastObject];
+//        }
+//        //不能滑，不能选
+//        tableView.scrollEnabled = NO;
+//        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+//}
+    static NSString *reuseID = @"AnniversaryCell";
+    AnniversaryCell *cell = (AnniversaryCell *)[tableView dequeueReusableCellWithIdentifier:reuseID];
+    if (cell == nil) {
+        cell = (AnniversaryCell *)[[[NSBundle mainBundle] loadNibNamed:@"AnniversaryCell" owner:self options:nil]lastObject];
     }
+    AnniversaryModel *model1 = _anniversaryArray[indexPath.row];
+    NSString *nameWithTag = [[NSString alloc]init];
+    if (model1.isDue) {
+        nameWithTag = [model1.anniversaryName stringByAppendingString:@"已经"];
+    }else{
+        nameWithTag = [model1.anniversaryName stringByAppendingString:@"还有"];
+    }
+    cell.anniversaryName.text = model1.anniversaryName;
+    cell.dueDate.text = [self stringFromDate:model1.dueDate];
+    
+    return cell;
 
 }
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (_tipsArray.count != 0) {
-        TipsModel *tips = _tipsArray[indexPath.row];
-        if (tips.isCompleted) {
-            tips.isCompleted = NO;
-        }else{
-            tips.isCompleted = YES;
-        }
-        _tipsArray[indexPath.row] = tips;
-        [TipsModel editTipsData:indexPath allTips:_tipsArray];
-        [self.tableView reloadData];
-    }
-
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    if (_tipsArray.count != 0) {
+//        TipsModel *tips = _tipsArray[indexPath.row];
+//        if (tips.isCompleted) {
+//            tips.isCompleted = NO;
+//        }else{
+//            tips.isCompleted = YES;
+//        }
+//        _tipsArray[indexPath.row] = tips;
+//        [TipsModel editTipsData:indexPath allTips:_tipsArray];
+//        [self.tableView reloadData];
+//    }
+//
+//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (_tipsArray.count != 0) {
-        return 50;
-    }else{
-        return self.view.bounds.size.height;
-    }
-
+//    if (_tipsArray.count != 0) {
+//        return 50;
+//    }else{
+//        return self.view.bounds.size.height;
+//    }
+    return 100;
 }
 
 
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (_tipsArray.count != 0) {
-        return YES;
-    }else{
-        return NO;
-    }
-}
+//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+//    if (_tipsArray.count != 0) {
+//        return YES;
+//    }else{
+//        return NO;
+//    }
+//}
 
 
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [TipsModel deleteTipsData:indexPath allTips:_tipsArray];
-//        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        [_tipsArray removeObjectAtIndex:indexPath.row];
-        [tableView reloadData];
-    }
-}
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+//    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        [TipsModel deleteTipsData:indexPath allTips:_tipsArray];
+////        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//        [_tipsArray removeObjectAtIndex:indexPath.row];
+//        [tableView reloadData];
+//    }
+//}
 
 #pragma mark - 添加/修改内部数据的代理方法
 

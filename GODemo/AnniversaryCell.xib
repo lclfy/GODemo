@@ -75,6 +75,12 @@
                 </constraints>
             </tableViewCellContentView>
             <animations/>
+            <connections>
+                <outlet property="anniversaryName" destination="02f-Mx-LTv" id="zPH-AH-xoD"/>
+                <outlet property="compareWithNowDate" destination="7J5-JJ-TgA" id="U5J-Mf-2M3"/>
+                <outlet property="dueDate" destination="fiE-mg-twi" id="CMh-ug-H8C"/>
+                <outlet property="editButton" destination="Nzj-en-Pqy" id="aFB-Jz-NTg"/>
+            </connections>
             <point key="canvasLocation" x="575" y="408"/>
         </tableViewCell>
     </objects>

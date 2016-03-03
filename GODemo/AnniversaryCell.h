@@ -10,4 +10,11 @@
 
 @interface AnniversaryCell : UITableViewCell
 
+@property (strong, nonatomic) IBOutlet UILabel *anniversaryName;
+@property (strong, nonatomic) IBOutlet UILabel *dueDate;
+@property (strong, nonatomic) IBOutlet UILabel *compareWithNowDate;
+@property (strong, nonatomic) IBOutlet UIButton *editButton;
+
+
+
 @end

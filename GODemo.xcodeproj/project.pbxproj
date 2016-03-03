@@ -37,6 +37,7 @@
 		20D9C9C81C77338000A0A017 /* AddEditTipsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D9C9C71C77338000A0A017 /* AddEditTipsViewController.m */; settings = {ASSET_TAGS = (); }; };
 		20E785E51C886C8600715BDD /* AnniversaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E785E31C886C8600715BDD /* AnniversaryCell.m */; settings = {ASSET_TAGS = (); }; };
 		20E785E61C886C8600715BDD /* AnniversaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20E785E41C886C8600715BDD /* AnniversaryCell.xib */; settings = {ASSET_TAGS = (); }; };
+		20E785E91C8885FB00715BDD /* AnniversaryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E785E81C8885FB00715BDD /* AnniversaryModel.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,8 @@
 		20E785E21C886C8600715BDD /* AnniversaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnniversaryCell.h; sourceTree = "<group>"; };
 		20E785E31C886C8600715BDD /* AnniversaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnniversaryCell.m; sourceTree = "<group>"; };
 		20E785E41C886C8600715BDD /* AnniversaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnniversaryCell.xib; sourceTree = "<group>"; };
+		20E785E71C8885FB00715BDD /* AnniversaryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnniversaryModel.h; sourceTree = "<group>"; };
+		20E785E81C8885FB00715BDD /* AnniversaryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnniversaryModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +281,8 @@
 			children = (
 				20464C7C1C75DD4900A5E262 /* TipsModel.h */,
 				20464C7D1C75DD4900A5E262 /* TipsModel.m */,
+				20E785E71C8885FB00715BDD /* AnniversaryModel.h */,
+				20E785E81C8885FB00715BDD /* AnniversaryModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -443,6 +448,7 @@
 				2028905F1C871FB4005BF76C /* NoTipsViewCell.m in Sources */,
 				20464C291C75C43600A5E262 /* Tab1ViewController.m in Sources */,
 				20464C261C75C43600A5E262 /* AppDelegate.m in Sources */,
+				20E785E91C8885FB00715BDD /* AnniversaryModel.m in Sources */,
 				20D9C9C81C77338000A0A017 /* AddEditTipsViewController.m in Sources */,
 				20464C231C75C43600A5E262 /* main.m in Sources */,
 				20464C841C75FA9A00A5E262 /* TipsTableViewController.m in Sources */,
