@@ -140,7 +140,7 @@
     
     //zzz表示时区，zzz可以删除，这样返回的日期字符将不包含时区信息。
     
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
+    [dateFormatter setDateFormat:@"yy-MM-dd HH:mm"];
     
     NSString *destDateString = [dateFormatter stringFromDate:date];
     
@@ -150,7 +150,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    
+    //显示提醒事项时
     if (_tipsArray.count != 0) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Tips"];
         if (cell == nil) {
@@ -179,15 +179,15 @@
     }else{
         //如果没有任何提醒，则设置一个空白页面，页面使用NoTipsViewCell
         static NSString *CellIdentifier = @"NoTips";
-//        NoTipsViewCell *cell = (NoTipsViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//        if (cell == nil)
-//        {
-//            cell= (NoTipsViewCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"NoTipsViewCell" owner:self options:nil]  lastObject];
-//        }
-        AnniversaryCell *cell = (AnniversaryCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (cell == nil) {
-            cell = (AnniversaryCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"AnniversaryCell" owner:self options:nil]  lastObject];
+        NoTipsViewCell *cell = (NoTipsViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil)
+        {
+            cell= (NoTipsViewCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"NoTipsViewCell" owner:self options:nil]  lastObject];
         }
+//        AnniversaryCell *cell = (AnniversaryCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//        if (cell == nil) {
+//            cell = (AnniversaryCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"AnniversaryCell" owner:self options:nil]  lastObject];
+//        }
         //不能滑，不能选
         tableView.scrollEnabled = NO;
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -216,7 +216,7 @@
     if (_tipsArray.count != 0) {
         return 50;
     }else{
-        return 100;
+        return self.view.bounds.size.height;
     }
 
 }
