@@ -236,6 +236,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="segmentOfTipsAndAnni" destination="Ius-KX-xy9" id="4LO-f5-aF7"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZSa-0F-zrH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
