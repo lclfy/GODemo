@@ -107,6 +107,7 @@
                 anniversary.isDue = [[obj objectForKey:@"anniversaryIsDue"]boolValue];
                 anniversary.dueDate = [obj objectForKey:@"dueDate"];
                 anniversary.anniversaryId = [obj objectForKey:@"objectId"];
+                anniversary.timeFromNow = [obj objectForKey:@"timeFromNow"];
                 [_anniversaryArray addObject:anniversary];
                 
             }
@@ -195,20 +196,7 @@
     }
 }
 
-- (NSString *)stringFromDate:(NSDate *)date{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-    if (!_tipAndAnni) {
-            [dateFormatter setDateFormat:@"yy-MM-dd HH:mm"];
-    }else{
-        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    }
-    //zzz表示时区，zzz可以删除，这样返回的日期字符将不包含时区信息。
-    
-    NSString *destDateString = [dateFormatter stringFromDate:date];
-    
-    return destDateString;
-    
-}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -275,6 +263,7 @@
             }
             cell.anniversaryName.text = nameWithTag;
             cell.dueDate.text = [self stringFromDate:model1.dueDate];
+            cell.timeFromNow.text = model1.timeFromNow;
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
             tableView.scrollEnabled = YES;
@@ -383,6 +372,15 @@
 
 //AddAnniversary
 - (void)AddEditViewControllerForAnniversay:(AddEditViewController *)controller didFinishAddingAnniversary:(AnniversaryModel *)anniversary{
+    NSDate *now = [NSDate date];
+    if ([anniversary.dueDate laterDate:now] == anniversary.dueDate ) {
+        //如果更晚的是dueDate，就说明还没有到期，就返回NO
+        anniversary.isDue = NO;
+    }else{
+        anniversary.isDue = YES;
+    }
+    //判断距今多少天
+    anniversary.timeFromNow = [self getUTCFormateDate:[self stringFromDate:anniversary.dueDate]];
     
     [self.anniversaryArray addObject:anniversary];
     [AnniversaryModel saveAnniversaryArray:_anniversaryArray];
@@ -393,6 +391,15 @@
 
 //EditAnniversary
 - (void)AddEditViewControllerForAnniversary:(AddEditViewController *)controller didFinishEditingAnniversary:(AnniversaryModel *)anniversary{
+    NSDate *now = [NSDate date];
+    if ([anniversary.dueDate laterDate:now] == anniversary.dueDate ) {
+        //如果更晚的是dueDate，就说明还没有到期，就返回NO
+        anniversary.isDue = NO;
+    }else{
+        anniversary.isDue = YES;
+    }
+    //判断距今多少天
+    anniversary.timeFromNow = [self getUTCFormateDate:[self stringFromDate:anniversary.dueDate]];
     NSInteger index = [_anniversaryArray indexOfObject:anniversary];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [AnniversaryModel editAnniversaryData:indexPath allAnniversaries:_anniversaryArray];
@@ -402,6 +409,47 @@
     
 }
 
+#pragma mark - 判断一个时间距今多少天/把日期转换为字符串
+- (NSString *)getUTCFormateDate:(NSString *)newsDate
+{
+    //    newsDate = @"2013-08-09 17:01";
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    NSLog(@"newsDate = %@",newsDate);
+    NSDate *newsDateFormatted = [dateFormatter dateFromString:newsDate];
+    
+    NSDate* current_date = [[NSDate alloc] init];
+    
+    NSTimeInterval time=[current_date timeIntervalSinceDate:newsDateFormatted];//间隔的秒数
+    int days=((int)time)/(3600*24);
+    NSLog(@"time=%f",(double)time);
+    
+    NSString *dateContent;
+    if(days > 0){
+        dateContent = [NSString stringWithFormat:@"%@%i",@"   ",days];
+    //    NSString *dateContent=[[NSString alloc] initWithFormat:@"%i天%i小时",days,hours];
+    }else if(days < 0){
+        days = -days;
+        dateContent = [NSString stringWithFormat:@"%@%i",@"   ",days];
+    }
+    return dateContent;
+}
+
+- (NSString *)stringFromDate:(NSDate *)date{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    if (!_tipAndAnni) {
+        [dateFormatter setDateFormat:@"yy-MM-dd HH:mm"];
+    }else{
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    }
+    //zzz表示时区，zzz可以删除，这样返回的日期字符将不包含时区信息。
+    
+    NSString *destDateString = [dateFormatter stringFromDate:date];
+    
+    return destDateString;
+    
+}
 
 
 

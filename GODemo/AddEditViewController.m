@@ -92,8 +92,13 @@
 
 - (void)updateDueDateLabel{
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    [formatter setDateStyle:NSDateFormatterMediumStyle];
-    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    if (!_tipAndAnni) {
+        [formatter setDateStyle:NSDateFormatterMediumStyle];
+        [formatter setTimeStyle:NSDateFormatterShortStyle];
+    }else{
+        [formatter setDateStyle:NSDateFormatterMediumStyle];
+    }
+
     self.dueDateLabel.text = [formatter stringFromDate:_dueDate];
     
 }
@@ -210,6 +215,12 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 
                 UIDatePicker *datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0.0f, 0.0f, self.view.bounds.size.width, 216.0f)];
+                if (!_tipAndAnni) {
+                    datePicker.datePickerMode = UIDatePickerModeDateAndTime;
+                }else{
+                    datePicker.datePickerMode = UIDatePickerModeDate;
+                }
+                
                 datePicker.tag = 100;
                 [cell.contentView addSubview:datePicker];
                 

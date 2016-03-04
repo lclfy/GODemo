@@ -20,6 +20,7 @@
     BmobObject *object = [BmobObject objectWithClassName:@"Anniversary"];
     for (AnniversaryModel *anniversaries in anniversaryArray) {
         [object setObject:anniversaries.anniversaryName forKey:@"anniversaryName" ];
+        [object setObject:anniversaries.timeFromNow forKey:@"timeFromNow" ];
         [object setObject:[NSNumber numberWithBool:anniversaries.isDue] forKey:@"anniversaryIsDue"];
         [object setObject:anniversaries.dueDate forKey:@"dueDate"];
         
@@ -41,6 +42,7 @@
             if (object) {
                 BmobObject *object = [BmobObject objectWithoutDatatWithClassName:object.className objectId:object.objectId];
                 [object setObject:anniversaries.anniversaryName forKey:@"anniversaryName" ];
+                [object setObject:anniversaries.timeFromNow forKey:@"timeFromNow" ];
                 [object setObject:[NSNumber numberWithBool:anniversaries.isDue] forKey:@"anniversaryIsDue"];
                 [object setObject:anniversaries.dueDate forKey:@"dueDate"];
                 [object updateInBackground];

@@ -32,8 +32,8 @@
                         <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5U-Pd-91G">
-                        <rect key="frame" x="251" y="38" width="36" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="天" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5U-Pd-91G">
+                        <rect key="frame" x="251" y="38" width="17" height="21"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -47,7 +47,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="_anniversary_sideBar" translatesAutoresizingMaskIntoConstraints="NO" id="PPb-S7-ccc">
-                        <rect key="frame" x="4" y="0.0" width="312" height="3"/>
+                        <rect key="frame" x="4" y="2" width="313" height="3"/>
                         <animations/>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nzj-en-Pqy">
@@ -59,13 +59,12 @@
                         </connections>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="_anniversary_sideBar" translatesAutoresizingMaskIntoConstraints="NO" id="X3d-bR-ilz">
-                        <rect key="frame" x="4" y="92" width="312" height="3"/>
+                        <rect key="frame" x="4" y="92" width="313" height="3"/>
                         <animations/>
                     </imageView>
                 </subviews>
                 <animations/>
                 <constraints>
-                    <constraint firstItem="PPb-S7-ccc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="387-Ya-Is4"/>
                     <constraint firstAttribute="bottomMargin" secondItem="7J5-JJ-TgA" secondAttribute="bottom" constant="17" id="3Gf-Yn-fKB"/>
                     <constraint firstAttribute="trailingMargin" secondItem="bvi-aH-fgd" secondAttribute="trailing" constant="-8" id="C8J-pw-RLW"/>
                     <constraint firstItem="02f-Mx-LTv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="20" id="DOl-dp-YDx"/>
@@ -73,30 +72,39 @@
                     <constraint firstItem="Nzj-en-Pqy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-9" id="Ffo-aJ-2Ia"/>
                     <constraint firstAttribute="bottomMargin" secondItem="a5U-Pd-91G" secondAttribute="bottom" constant="32" id="Fi3-bo-QPb"/>
                     <constraint firstItem="bvi-aH-fgd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="ItW-cG-kUG"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="X3d-bR-ilz" secondAttribute="trailing" constant="-5" id="J1S-vT-ahe"/>
+                    <constraint firstItem="PPb-S7-ccc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-6" id="NcA-Sn-ww5"/>
                     <constraint firstAttribute="trailingMargin" secondItem="7J5-JJ-TgA" secondAttribute="trailing" constant="69" id="Nfp-BX-og9"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="a5U-Pd-91G" secondAttribute="trailing" constant="25" id="SM0-Hj-JWM"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="a5U-Pd-91G" secondAttribute="trailing" constant="44" id="SM0-Hj-JWM"/>
                     <constraint firstItem="fiE-mg-twi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="14" id="Wzj-Gy-Q4c"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="PPb-S7-ccc" secondAttribute="trailing" constant="-5" id="ZtY-cJ-Oxm"/>
                     <constraint firstItem="fiE-mg-twi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="39" id="aCe-jc-du7"/>
                     <constraint firstItem="a5U-Pd-91G" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="30" id="aZ2-p9-2Ug"/>
                     <constraint firstAttribute="bottomMargin" secondItem="fiE-mg-twi" secondAttribute="bottom" constant="23" id="bBh-cr-sOV"/>
                     <constraint firstItem="bvi-aH-fgd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="bMR-pl-UCm"/>
                     <constraint firstItem="PPb-S7-ccc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-4" id="bZ4-vJ-cBj"/>
                     <constraint firstAttribute="bottomMargin" secondItem="02f-Mx-LTv" secondAttribute="bottom" constant="42" id="cnP-V1-jgC"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="PPb-S7-ccc" secondAttribute="trailing" constant="-4" id="dfl-hH-TJv"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="X3d-bR-ilz" secondAttribute="trailing" constant="-6" id="eRE-bj-GM2"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Nzj-en-Pqy" secondAttribute="trailing" constant="-8" id="gJn-EU-xuU"/>
                     <constraint firstItem="02f-Mx-LTv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="14" id="nDS-t2-b17"/>
                     <constraint firstItem="X3d-bR-ilz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-4" id="obs-N0-hUR"/>
                     <constraint firstAttribute="bottomMargin" secondItem="bvi-aH-fgd" secondAttribute="bottom" constant="-8" id="sdC-9o-7rH"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="X3d-bR-ilz" secondAttribute="trailing" constant="-4" id="tEY-Zg-T8n"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="PPb-S7-ccc" secondAttribute="trailing" constant="-6" id="wma-rT-H1J"/>
                     <constraint firstItem="7J5-JJ-TgA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="7" id="z3J-r9-v18"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="wma-rT-H1J"/>
+                        <exclude reference="eRE-bj-GM2"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <animations/>
             <connections>
                 <outlet property="anniversaryName" destination="02f-Mx-LTv" id="zPH-AH-xoD"/>
-                <outlet property="compareWithNowDate" destination="7J5-JJ-TgA" id="U5J-Mf-2M3"/>
                 <outlet property="dueDate" destination="fiE-mg-twi" id="CMh-ug-H8C"/>
                 <outlet property="editButton" destination="Nzj-en-Pqy" id="aFB-Jz-NTg"/>
+                <outlet property="timeFromNow" destination="7J5-JJ-TgA" id="sW0-LF-Rnr"/>
                 <outlet property="topBar" destination="PPb-S7-ccc" id="L5h-GK-KsU"/>
             </connections>
             <point key="canvasLocation" x="575" y="408"/>
