@@ -16,7 +16,7 @@
 #import "AnniversaryModel.h"
 
 
-@interface TipsTableViewController () <UITableViewDataSource,UITableViewDelegate,AddEditViewControllerDelegate>
+@interface TipsTableViewController () <UITableViewDataSource,UITableViewDelegate,AddEditViewControllerDelegate,AnniversaryCellDelegate>
 
 @property (nonatomic,strong) NSMutableArray *tipsArray;
 @property (nonatomic,strong) NSMutableArray *anniversaryArray;
@@ -89,7 +89,7 @@
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
             [ProgressHUD dismiss]; });
     }];
-
+    
     
 }
 
@@ -136,8 +136,10 @@
     [self getAnniversaryData];
     [self.segmentOfTipsAndAnni addTarget:self action:@selector(isTipOrAnni) forControlEvents:UIControlEventValueChanged];
     
+    
 
 }
+
 
 //用来临时往服务器里面添加数据…
 - (void)getNewArray{
@@ -263,6 +265,8 @@
             }
             cell.anniversaryName.text = nameWithTag;
             cell.dueDate.text = [self stringFromDate:model1.dueDate];
+            cell.delegate = self;
+            cell.editButton.tag = indexPath.row;
             cell.timeFromNow.text = model1.timeFromNow;
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -276,6 +280,8 @@
     
 
 }
+
+
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -455,7 +461,7 @@
 
 
 #pragma mark - Navigation
-//注意：编辑倒数日的功能在下方，EditAnniversary方法
+//注意：编辑倒数日的功能在下方，AnniversaryCellWillEdit方法
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if (!_tipAndAnni) {
         if ([segue.identifier isEqualToString:@"Add"]) {
@@ -471,8 +477,8 @@
             AddEditViewController *controller = (AddEditViewController *)naviCon.topViewController;
             controller.delegate = self;
             NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+            controller.tipAndAnni = self.tipAndAnni;
             controller.tipsToEdit = _tipsArray[indexPath.row];
-            
         }
     }else{
         if ([segue.identifier isEqualToString:@"Add"]) {
@@ -481,13 +487,25 @@
             controller.delegate = self;
             controller.tipAndAnni = self.tipAndAnni;
             controller.anniversaryToEdit = nil;
+            
+        }else if ([segue.identifier isEqualToString:@"Edit"]){
+            UINavigationController *naviCon = segue.destinationViewController;
+            AddEditViewController *controller = (AddEditViewController *)naviCon.topViewController;
+            controller.delegate = self;
+            NSInteger row = [sender intValue];
+            controller.tipAndAnni = self.tipAndAnni;
+            controller.anniversaryToEdit = _anniversaryArray[row];
+            
         }
     }
 
-
+    
 }
 
-+ (void)editAnniversary{
+
+- (void)AnniversaryCellWillEdit:(AnniversaryCell *)cell{
+    NSString *btnTag = [NSString stringWithFormat:@"%ld", (long)cell.editButton.tag];
+    [self performSegueWithIdentifier:@"Edit" sender:btnTag];
     NSLog(@"11111");
     
 }

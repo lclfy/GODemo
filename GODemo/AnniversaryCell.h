@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class AnniversaryCell;
+
+@protocol AnniversaryCellDelegate <NSObject>
+//提醒和倒数日的代理方法
+
+
+- (void)AnniversaryCellWillEdit:(AnniversaryCell *)cell;
+
+@end
+
+
+
 @interface AnniversaryCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *anniversaryName;
@@ -16,6 +28,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *editButton;
 @property (strong, nonatomic) IBOutlet UIImageView *topBar;
 
+@property (weak,nonatomic) id delegate;
 
 
 @end

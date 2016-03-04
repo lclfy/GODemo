@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "AddEditViewController.h"
+#import "AnniversaryCell.h"
 
 
-@interface TipsTableViewController : UITableViewController <AddEditViewControllerDelegate>
+@interface TipsTableViewController : UITableViewController <AddEditViewControllerDelegate,AnniversaryCellDelegate>
 
-+ (void)editAnniversary;
+- (void)editAnniversary;
 
 @end

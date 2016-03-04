@@ -71,7 +71,7 @@
             self.title = @"修改纪念日";
             self.textField.text = self.anniversaryToEdit.anniversaryName;
             self.doneBtn.enabled = YES;
-            _dueDate = self.tipsToEdit.dueDate;
+            _dueDate = self.anniversaryToEdit.dueDate;
         }else{
             self.title = @"添加纪念日";
             _dueDate = [NSDate date];

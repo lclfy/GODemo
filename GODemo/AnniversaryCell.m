@@ -14,6 +14,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -24,7 +25,7 @@
 
 #pragma mark - 点击按钮后执行的动作
 - (IBAction)editButton:(id)sender {
-    [TipsTableViewController editAnniversary];
+    [self.delegate AnniversaryCellWillEdit:self];
     
 }
 

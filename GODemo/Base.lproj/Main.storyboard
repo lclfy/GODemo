@@ -240,6 +240,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="segmentOfTipsAndAnni" destination="Ius-KX-xy9" id="4LO-f5-aF7"/>
+                        <segue destination="T9a-Ja-b9z" kind="presentation" identifier="Edit" id="4QN-ts-AO6"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZSa-0F-zrH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -286,6 +287,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="oTn-pT-79T"/>
+        <segue reference="4QN-ts-AO6"/>
     </inferredMetricsTieBreakers>
 </document>

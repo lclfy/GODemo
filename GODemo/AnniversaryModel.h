@@ -19,6 +19,7 @@
 @property (nonatomic,copy) NSString *anniversaryId;
 @property (nonatomic,copy) NSString *timeFromNow;
 
+
 //存储，修改，删除
 + (void)saveAnniversaryArray:(NSMutableArray *)anniversaryArray;
 
