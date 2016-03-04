@@ -106,7 +106,7 @@
                 anniversary.anniversaryName = [obj objectForKey:@"anniversaryName"];
                 anniversary.isDue = [[obj objectForKey:@"anniversaryIsDue"]boolValue];
                 anniversary.dueDate = [obj objectForKey:@"dueDate"];
-                anniversary.anniversaryId = [obj objectForKey:@"objectID"];
+                anniversary.anniversaryId = [obj objectForKey:@"objectId"];
                 [_anniversaryArray addObject:anniversary];
                 
             }

@@ -18,6 +18,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *dueDateLabel;
 
 
+@property (strong, nonatomic) IBOutlet UILabel *EnabledToRemind;
+@property (strong, nonatomic) IBOutlet UISwitch *EnableToRemindSwitch;
+
+
 
 
 @end
@@ -103,7 +107,7 @@
     
     UITableViewCell *datePickerCell = [self.tableView cellForRowAtIndexPath:indexPathDatePicker];
     UIDatePicker *datePicker = (UIDatePicker *)[datePickerCell viewWithTag:100];
-    [datePicker setDate:_dueDate animated:NO];
+    [datePicker setDate:_dueDate animated:YES];
 }
 
 - (void)dateChanged:(UIDatePicker *)datePicker{
@@ -137,13 +141,24 @@
     }else{
         self.doneBtn.enabled = NO;
     }
-    if (_tipsToEdit != nil) {
-        self.tipsToEdit.tipsName = _textField.text;
-        NSLog(@"edit");
+    if (!_tipAndAnni) {
+        if (_tipsToEdit != nil) {
+            self.tipsToEdit.tipsName = _textField.text;
+            NSLog(@"edit-tip");
+        }else{
+            self.tips.tipsName = _textField.text;
+            NSLog(@"%@",_textField.text);
+        }
     }else{
-        self.tips.tipsName = _textField.text;
-        NSLog(@"%@",_textField.text);
+        if (_tipsToEdit != nil) {
+            self.anniversaryToEdit.anniversaryName = _textField.text;
+            NSLog(@"edit-anni");
+        }else{
+            self.anniversary.anniversaryName = _textField.text;
+            NSLog(@"%@",_textField.text);
+        }
     }
+
     
 }
 
@@ -154,15 +169,26 @@
 #pragma mark - 按钮作用
 
 - (IBAction)doneBtn:(id)sender {
-    if (_tipsToEdit != nil) {
-        _tipsToEdit.needToRemind = self.remindSwitchControl.on;
-        _tipsToEdit.dueDate = _dueDate;
-        [self.delegate AddEditViewControllerForTip:self didFinishEditingTips:_tipsToEdit];
+    if (!_tipAndAnni) {
+        if (_tipsToEdit != nil) {
+            _tipsToEdit.needToRemind = self.remindSwitchControl.on;
+            _tipsToEdit.dueDate = _dueDate;
+            [self.delegate AddEditViewControllerForTip:self didFinishEditingTips:_tipsToEdit];
+        }else{
+            _tips.needToRemind = self.remindSwitchControl.on;
+            _tips.dueDate = _dueDate;
+            [self.delegate AddEditViewControllerForTip:self didFinishAddingTips:_tips];
+        }
     }else{
-        _tips.needToRemind = self.remindSwitchControl.on;
-        _tips.dueDate = _dueDate;
-    [self.delegate AddEditViewControllerForTip:self didFinishAddingTips:_tips];
+        if (_anniversaryToEdit != nil) {
+            _anniversaryToEdit.dueDate = _dueDate;
+            [self.delegate AddEditViewControllerForAnniversary:self didFinishEditingAnniversary:_anniversaryToEdit];
+        }else{
+            _anniversary.dueDate = _dueDate;
+            [self.delegate AddEditViewControllerForAnniversay:self didFinishAddingAnniversary:_anniversary];
+        }
     }
+
 }
 
 
@@ -173,24 +199,27 @@
 #pragma mark - tableView Data Source
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    if (indexPath.section == 1 && indexPath.row == 2) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DatePickerCell"];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"DatePickerCell"];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            
-            UIDatePicker *datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0.0f, 0.0f, self.view.bounds.size.width, 216.0f)];
-            datePicker.tag = 100;
-            [cell.contentView addSubview:datePicker];
-            
-            [datePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
-        }
-        return cell;
-    }else{
-        return [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    if (_tipAndAnni) {
+        self.EnabledToRemind.text = @"请选择倒数日的时间";
+        [self.EnableToRemindSwitch setHidden:YES];
     }
-    
+        if (indexPath.section == 1 && indexPath.row == 2) {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DatePickerCell"];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"DatePickerCell"];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                
+                UIDatePicker *datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0.0f, 0.0f, self.view.bounds.size.width, 216.0f)];
+                datePicker.tag = 100;
+                [cell.contentView addSubview:datePicker];
+                
+                [datePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
+            }
+            return cell;
+        }else{
+            return [super tableView:tableView cellForRowAtIndexPath:indexPath];
+        }
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

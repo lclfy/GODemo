@@ -162,6 +162,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="EnableToRemindSwitch" destination="flu-CJ-0T1" id="zVz-YA-8h4"/>
+                        <outlet property="EnabledToRemind" destination="ntR-Sg-UVP" id="gKp-K5-Lz7"/>
                         <outlet property="doneBtn" destination="bmY-GE-FkJ" id="xUY-DP-Tcs"/>
                         <outlet property="dueDateLabel" destination="L1Z-8g-yoS" id="kcK-P0-5Jw"/>
                         <outlet property="remindSwitchControl" destination="flu-CJ-0T1" id="LXg-eZ-n4Z"/>
