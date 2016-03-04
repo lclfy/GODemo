@@ -9,14 +9,14 @@
 #import "TipsTableViewController.h"
 #import "TipsModel.h"
 #import <BmobSDK/Bmob.h>
-#import "AddEditTipsViewController.h"
+#import "AddEditViewController.h"
 #import "NoTipsViewCell.h"
 #import "ProgressHUD.h"
 #import "AnniversaryCell.h"
 #import "AnniversaryModel.h"
 
 
-@interface TipsTableViewController () <UITableViewDataSource,UITableViewDelegate,AddEditTipsViewControllerDelegate>
+@interface TipsTableViewController () <UITableViewDataSource,UITableViewDelegate,AddEditViewControllerDelegate>
 
 @property (nonatomic,strong) NSMutableArray *tipsArray;
 @property (nonatomic,strong) NSMutableArray *anniversaryArray;
@@ -351,7 +351,9 @@
 
 #pragma mark - 添加/修改内部数据的代理方法
 
-- (void)AddEditTipsViewController:(AddEditTipsViewController *)controller didFinishAdding:(TipsModel *)tips{
+
+//AddTip
+- (void)AddEditViewControllerForTip:(AddEditViewController *)controller didFinishAddingTips:(TipsModel *)tips{
     
     [self.tipsArray addObject:tips];
     [TipsModel saveTipsArray:_tipsArray];
@@ -359,7 +361,8 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)AddEditTipsViewController:(AddEditTipsViewController *)controller didFinishEditing:(TipsModel *)tips{
+//EditTip
+- (void)AddEditViewControllerForTip:(AddEditViewController *)controller didFinishEditingTips:(TipsModel *)tips{
     
     NSInteger index = [_tipsArray indexOfObject:tips];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
@@ -369,30 +372,65 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)AddEditTipsViewControllerDidCancel:(AddEditTipsViewController *)controller{
+//AddAnniversary
+- (void)AddEditViewControllerForAnniversay:(AddEditViewController *)controller didFinishAddingAnniversary:(AnniversaryModel *)anniversary{
+    
+    [self.anniversaryArray addObject:anniversary];
+    [AnniversaryModel saveAnniversaryArray:_anniversaryArray];
+    [self.tableView reloadData];
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+//EditAnniversary
+- (void)AddEditViewControllerForAnniversary:(AddEditViewController *)controller didFinishEditingAnniversary:(AnniversaryModel *)anniversary{
+    NSInteger index = [_anniversaryArray indexOfObject:anniversary];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    [AnniversaryModel editAnniversaryData:indexPath allAnniversaries:_anniversaryArray];
+    //    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    [self.tableView reloadData];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 
-#pragma mark - Navigation
 
+
+
+#pragma mark - Navigation
+//注意：编辑倒数日的功能在下方，EditAnniversary方法
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"AddTips"]) {
-        UINavigationController *naviCon = segue.destinationViewController;
-        AddEditTipsViewController *controller = (AddEditTipsViewController *)naviCon.topViewController;
-        controller.delegate = self;
-        controller.tipsToEdit = nil;
-        
-        
-    }else if ([segue.identifier isEqualToString:@"EditTips"]){
-        UINavigationController *naviCon = segue.destinationViewController;
-        AddEditTipsViewController *controller = (AddEditTipsViewController *)naviCon.topViewController;
-        controller.delegate = self;
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-        controller.tipsToEdit = _tipsArray[indexPath.row];
-        
+    if (!_tipAndAnni) {
+        if ([segue.identifier isEqualToString:@"Add"]) {
+            UINavigationController *naviCon = segue.destinationViewController;
+            AddEditViewController *controller = (AddEditViewController *)naviCon.topViewController;
+            controller.delegate = self;
+            controller.tipsToEdit = nil;
+            
+            
+        }else if ([segue.identifier isEqualToString:@"EditTips"]){
+            UINavigationController *naviCon = segue.destinationViewController;
+            AddEditViewController *controller = (AddEditViewController *)naviCon.topViewController;
+            controller.delegate = self;
+            NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+            controller.tipsToEdit = _tipsArray[indexPath.row];
+            
+        }
+    }else{
+        if ([segue.identifier isEqualToString:@"Add"]) {
+            UINavigationController *naviCon = segue.destinationViewController;
+            AddEditViewController *controller = (AddEditViewController *)naviCon.topViewController;
+            controller.delegate = self;
+            controller.anniversaryToEdit = nil;
+        }
     }
 
+
+}
+
++ (void)editAnniversary{
+    NSLog(@"11111");
+    
 }
 
 

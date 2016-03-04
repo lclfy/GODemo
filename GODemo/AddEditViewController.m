@@ -6,30 +6,42 @@
 //  Copyright © 2016年 罗思聪. All rights reserved.
 //
 
-#import "AddEditTipsViewController.h"
+#import "AddEditViewController.h"
 #import "TipsModel.h"
+#import "AnniversaryModel.h"
 
-@interface AddEditTipsViewController () <UITableViewDataSource,UITableViewDelegate>
+@interface AddEditViewController () <UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong) TipsModel *tips;
+@property (nonatomic,strong) AnniversaryModel *anniversary;
 @property (nonatomic,copy) NSDate *dueDate;
 @property (strong, nonatomic) IBOutlet UILabel *dueDateLabel;
 
 
 
+
 @end
 
-@implementation AddEditTipsViewController{
+@implementation AddEditViewController{
     NSDate *_dueDate;
     BOOL _datePickerVisible;
 }
 
+#pragma mark - 懒加载
 - (TipsModel *)tips{
     if (_tips == nil) {
         _tips = [[TipsModel alloc]init];
     }
     return _tips;
 }
+
+- (AnniversaryModel *)anniversary{
+    if (_anniversary == nil) {
+        _anniversary = [[AnniversaryModel alloc]init];
+    }
+    return _anniversary;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -131,11 +143,11 @@
     if (_tipsToEdit != nil) {
         _tipsToEdit.needToRemind = self.remindSwitchControl.on;
         _tipsToEdit.dueDate = _dueDate;
-        [self.delegate AddEditTipsViewController:self didFinishEditing:_tipsToEdit];
+        [self.delegate AddEditViewControllerForTip:self didFinishEditingTips:_tipsToEdit];
     }else{
         _tips.needToRemind = self.remindSwitchControl.on;
         _tips.dueDate = _dueDate;
-    [self.delegate AddEditTipsViewController:self didFinishAdding:_tips];
+    [self.delegate AddEditViewControllerForTip:self didFinishAddingTips:_tips];
     }
 }
 

@@ -34,7 +34,7 @@
 		20464C751C75DBC100A5E262 /* BmobSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20464C741C75DBC100A5E262 /* BmobSDK.framework */; settings = {ASSET_TAGS = (); }; };
 		20464C7E1C75DD4900A5E262 /* TipsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20464C7D1C75DD4900A5E262 /* TipsModel.m */; settings = {ASSET_TAGS = (); }; };
 		20464C841C75FA9A00A5E262 /* TipsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20464C831C75FA9A00A5E262 /* TipsTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		20D9C9C81C77338000A0A017 /* AddEditTipsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D9C9C71C77338000A0A017 /* AddEditTipsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		20D9C9C81C77338000A0A017 /* AddEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D9C9C71C77338000A0A017 /* AddEditViewController.m */; settings = {ASSET_TAGS = (); }; };
 		20E785E51C886C8600715BDD /* AnniversaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E785E31C886C8600715BDD /* AnniversaryCell.m */; settings = {ASSET_TAGS = (); }; };
 		20E785E61C886C8600715BDD /* AnniversaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20E785E41C886C8600715BDD /* AnniversaryCell.xib */; settings = {ASSET_TAGS = (); }; };
 		20E785E91C8885FB00715BDD /* AnniversaryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E785E81C8885FB00715BDD /* AnniversaryModel.m */; settings = {ASSET_TAGS = (); }; };
@@ -97,8 +97,8 @@
 		20464C7D1C75DD4900A5E262 /* TipsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TipsModel.m; path = ../TipsModel.m; sourceTree = "<group>"; };
 		20464C821C75FA9A00A5E262 /* TipsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TipsTableViewController.h; path = ../TipsTableViewController.h; sourceTree = "<group>"; };
 		20464C831C75FA9A00A5E262 /* TipsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TipsTableViewController.m; path = ../TipsTableViewController.m; sourceTree = "<group>"; };
-		20D9C9C61C77338000A0A017 /* AddEditTipsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEditTipsViewController.h; sourceTree = "<group>"; };
-		20D9C9C71C77338000A0A017 /* AddEditTipsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEditTipsViewController.m; sourceTree = "<group>"; };
+		20D9C9C61C77338000A0A017 /* AddEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEditViewController.h; sourceTree = "<group>"; };
+		20D9C9C71C77338000A0A017 /* AddEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEditViewController.m; sourceTree = "<group>"; };
 		20E785E21C886C8600715BDD /* AnniversaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnniversaryCell.h; sourceTree = "<group>"; };
 		20E785E31C886C8600715BDD /* AnniversaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnniversaryCell.m; sourceTree = "<group>"; };
 		20E785E41C886C8600715BDD /* AnniversaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnniversaryCell.xib; sourceTree = "<group>"; };
@@ -237,8 +237,8 @@
 				20464C281C75C43600A5E262 /* Tab1ViewController.m */,
 				20464C821C75FA9A00A5E262 /* TipsTableViewController.h */,
 				20464C831C75FA9A00A5E262 /* TipsTableViewController.m */,
-				20D9C9C61C77338000A0A017 /* AddEditTipsViewController.h */,
-				20D9C9C71C77338000A0A017 /* AddEditTipsViewController.m */,
+				20D9C9C61C77338000A0A017 /* AddEditViewController.h */,
+				20D9C9C71C77338000A0A017 /* AddEditViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -449,7 +449,7 @@
 				20464C291C75C43600A5E262 /* Tab1ViewController.m in Sources */,
 				20464C261C75C43600A5E262 /* AppDelegate.m in Sources */,
 				20E785E91C8885FB00715BDD /* AnniversaryModel.m in Sources */,
-				20D9C9C81C77338000A0A017 /* AddEditTipsViewController.m in Sources */,
+				20D9C9C81C77338000A0A017 /* AddEditViewController.m in Sources */,
 				20464C231C75C43600A5E262 /* main.m in Sources */,
 				20464C841C75FA9A00A5E262 /* TipsTableViewController.m in Sources */,
 				2028906E1C87307D005BF76C /* ProgressHUD.m in Sources */,

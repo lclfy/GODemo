@@ -50,6 +50,9 @@
                         <rect key="frame" x="245" y="-1" width="75" height="75"/>
                         <animations/>
                         <state key="normal" image="_anniversary_Edit_Btn"/>
+                        <connections>
+                            <action selector="editButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="y3e-gL-akQ"/>
+                        </connections>
                     </button>
                 </subviews>
                 <animations/>

@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AddEditTipsViewController.h"
+#import "AddEditViewController.h"
 
 
-@interface TipsTableViewController : UITableViewController <AddEditTipsViewControllerDelegate>
+@interface TipsTableViewController : UITableViewController <AddEditViewControllerDelegate>
+
++ (void)editAnniversary;
 
 @end

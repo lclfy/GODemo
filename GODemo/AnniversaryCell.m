@@ -7,6 +7,7 @@
 //
 
 #import "AnniversaryCell.h"
+#import "TipsTableViewController.h"
 
 @implementation AnniversaryCell
 
@@ -20,5 +21,14 @@
 
     // Configure the view for the selected state
 }
+
+#pragma mark - 点击按钮后执行的动作
+- (IBAction)editButton:(id)sender {
+    [TipsTableViewController editAnniversary];
+    
+}
+
+
+
 
 @end

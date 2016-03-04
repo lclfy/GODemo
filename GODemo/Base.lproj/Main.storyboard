@@ -38,7 +38,7 @@
         <!--添加提醒-->
         <scene sceneID="Xm7-E3-Ahw">
             <objects>
-                <tableViewController id="B8r-t8-zea" customClass="AddEditTipsViewController" sceneMemberID="viewController">
+                <tableViewController id="B8r-t8-zea" customClass="AddEditViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="3Ny-Rk-65t">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -232,7 +232,7 @@
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" title="添加" id="A0O-em-Szf">
                             <connections>
-                                <segue destination="T9a-Ja-b9z" kind="presentation" identifier="AddTips" id="oTn-pT-79T"/>
+                                <segue destination="T9a-Ja-b9z" kind="presentation" identifier="Add" id="oTn-pT-79T"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -284,6 +284,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gUU-qR-LW1"/>
+        <segue reference="oTn-pT-79T"/>
     </inferredMetricsTieBreakers>
 </document>
