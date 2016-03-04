@@ -14,6 +14,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *dueDate;
 @property (strong, nonatomic) IBOutlet UILabel *compareWithNowDate;
 @property (strong, nonatomic) IBOutlet UIButton *editButton;
+@property (strong, nonatomic) IBOutlet UIImageView *topBar;
 
 
 

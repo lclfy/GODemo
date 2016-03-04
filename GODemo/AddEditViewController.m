@@ -45,21 +45,35 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"%@",[NSNumber numberWithBool:self.tipAndAnni]);
     [self.textField becomeFirstResponder];
     [self.textField addTarget:self action:@selector(textChanged) forControlEvents:UIControlEventEditingChanged];
     //分为编辑界面和添加界面分别规定界面元素内容
-    if (_tipsToEdit != nil) {
-        self.title = @"修改提醒";
-        self.textField.text = self.tipsToEdit.tipsName;
-        self.doneBtn.enabled = YES;
-        [self.remindSwitchControl setOn:self.tipsToEdit.needToRemind];
-        _dueDate = self.tipsToEdit.dueDate;
-        
-        
+    if (!self.tipAndAnni) {
+        if (_tipsToEdit != nil) {
+            self.title = @"修改提醒";
+            self.textField.text = self.tipsToEdit.tipsName;
+            self.doneBtn.enabled = YES;
+            [self.remindSwitchControl setOn:self.tipsToEdit.needToRemind];
+            _dueDate = self.tipsToEdit.dueDate;
+            
+            
+        }else{
+            self.remindSwitchControl.on = NO;
+            _dueDate = [NSDate date];
+        }
     }else{
-        self.remindSwitchControl.on = NO;
-        _dueDate = [NSDate date];
+        if (_anniversaryToEdit != nil) {
+            self.title = @"修改纪念日";
+            self.textField.text = self.anniversaryToEdit.anniversaryName;
+            self.doneBtn.enabled = YES;
+            _dueDate = self.tipsToEdit.dueDate;
+        }else{
+            self.title = @"添加纪念日";
+            _dueDate = [NSDate date];
+        }
     }
+
     
     [self updateDueDateLabel];
     

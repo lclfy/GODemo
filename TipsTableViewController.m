@@ -238,6 +238,8 @@
             
             //隐藏多余的分隔线
             [self setExtraCellLineHidden:tableView];
+            tableView.scrollEnabled = YES;
+            tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
             return cell;
         }else{
             //如果没有任何提醒，则设置一个空白页面，页面使用NoTipsViewCell
@@ -266,10 +268,17 @@
             }else{
                 nameWithTag = [model1.anniversaryName stringByAppendingString:@"还有"];
             }
-            cell.anniversaryName.text = model1.anniversaryName;
+            if (indexPath.row == 0) {
+                [cell.editButton setHidden:YES];
+            }else{
+                [cell.topBar setHidden:YES];
+            }
+            cell.anniversaryName.text = nameWithTag;
             cell.dueDate.text = [self stringFromDate:model1.dueDate];
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+            tableView.scrollEnabled = YES;
+            
             return cell;
 
         }
@@ -405,6 +414,7 @@
             UINavigationController *naviCon = segue.destinationViewController;
             AddEditViewController *controller = (AddEditViewController *)naviCon.topViewController;
             controller.delegate = self;
+            controller.tipAndAnni = self.tipAndAnni;
             controller.tipsToEdit = nil;
             
             
@@ -421,6 +431,7 @@
             UINavigationController *naviCon = segue.destinationViewController;
             AddEditViewController *controller = (AddEditViewController *)naviCon.topViewController;
             controller.delegate = self;
+            controller.tipAndAnni = self.tipAndAnni;
             controller.anniversaryToEdit = nil;
         }
     }

@@ -84,12 +84,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TipsTableViewController.m"
-            timestampString = "478769561.585471"
+            timestampString = "478784913.228731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "366"
-            endingLineNumber = "366"
+            startingLineNumber = "375"
+            endingLineNumber = "375"
             landmarkName = "-AddEditViewControllerForTip:didFinishEditingTips:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GODemo/AnniversaryModel.m"
+            timestampString = "478784547.944712"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "+deleteAnniversaryData:allAnniversaries:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

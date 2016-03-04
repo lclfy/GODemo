@@ -40,6 +40,7 @@
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneBtn;
 
+//判断是提醒还是纪念日
 @property (nonatomic,assign) BOOL tipAndAnni;
 
 
