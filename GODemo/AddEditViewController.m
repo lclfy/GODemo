@@ -77,7 +77,7 @@
             _dueDate = [NSDate date];
         }
     }
-
+    
     
     [self updateDueDateLabel];
     
@@ -85,7 +85,7 @@
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-
+    
 }
 
 #pragma mark - 更新时间标签
@@ -98,7 +98,7 @@
     }else{
         [formatter setDateStyle:NSDateFormatterMediumStyle];
     }
-
+    
     self.dueDateLabel.text = [formatter stringFromDate:_dueDate];
     
 }
@@ -163,7 +163,7 @@
             NSLog(@"%@",_textField.text);
         }
     }
-
+    
     
 }
 
@@ -190,11 +190,28 @@
             [self.delegate AddEditViewControllerForAnniversary:self didFinishEditingAnniversary:_anniversaryToEdit];
         }else{
             _anniversary.dueDate = _dueDate;
-            [self.delegate AddEditViewControllerForAnniversay:self didFinishAddingAnniversary:_anniversary];
+            [self.delegate AddEditViewControllerForAnniversary:self didFinishAddingAnniversary:_anniversary];
         }
     }
-
+    
 }
+
+- (IBAction)deleteBtn:(id)sender {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"将删除该内容" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"删除" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        if (_anniversaryToEdit != nil) {
+            [self.delegate AddEditViewControllerForAnniversary:self didDeleteAnniversary:_anniversaryToEdit];
+        }else if (_tipsToEdit != nil){
+            [self.delegate AddEditViewControllerForTip:self didDeleteTips:_tipsToEdit];
+        }
+    }];
+    [alertController addAction:cancelAction];
+    [alertController addAction:deleteAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+}
+
 
 
 - (IBAction)cancelBtn:(id)sender {
@@ -208,29 +225,30 @@
         self.EnabledToRemind.text = @"请选择倒数日的时间";
         [self.EnableToRemindSwitch setHidden:YES];
     }
-        if (indexPath.section == 1 && indexPath.row == 2) {
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DatePickerCell"];
-            if (cell == nil) {
-                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"DatePickerCell"];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                
-                UIDatePicker *datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0.0f, 0.0f, self.view.bounds.size.width, 216.0f)];
-                if (!_tipAndAnni) {
-                    datePicker.datePickerMode = UIDatePickerModeDateAndTime;
-                }else{
-                    datePicker.datePickerMode = UIDatePickerModeDate;
-                }
-                
-                datePicker.tag = 100;
-                [cell.contentView addSubview:datePicker];
-                
-                [datePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    if (indexPath.section == 1 && indexPath.row == 2) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DatePickerCell"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"DatePickerCell"];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            UIDatePicker *datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0.0f, 0.0f, self.view.bounds.size.width, 216.0f)];
+            if (!_tipAndAnni) {
+                datePicker.datePickerMode = UIDatePickerModeDateAndTime;
+            }else{
+                datePicker.datePickerMode = UIDatePickerModeDate;
             }
-            return cell;
-        }else{
-            return [super tableView:tableView cellForRowAtIndexPath:indexPath];
+            
+            datePicker.tag = 100;
+            [cell.contentView addSubview:datePicker];
+            
+            [datePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
         }
-
+        return cell;
+    }else{
+        return [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    }
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -242,6 +260,16 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    //临时隐藏在添加状态下的“删除”按钮
+    //判断什么时候应该出现删除按钮
+    if (_tipsToEdit != nil || _anniversaryToEdit != nil) {
+        
+    }else{
+        if (indexPath.section == 2 && indexPath.row == 0) {
+            return 0;
+        }
+    }
+    
     if (indexPath.section == 1 && indexPath.row == 2) {
         return 217.0f;
     }else{
@@ -258,10 +286,12 @@
             [self showDatePicker];
         }else{
             
-        [self hideDatePicker];
+            [self hideDatePicker];
         }
     }
 }
+
+
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 1 && indexPath.section == 1) {
@@ -279,6 +309,8 @@
         return [super tableView:tableView indentationLevelForRowAtIndexPath:indexPath];
     }
 }
+
+
 
 
 

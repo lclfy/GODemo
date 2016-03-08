@@ -41,12 +41,12 @@
     [bquery getObjectInBackgroundWithId:anniversaries.anniversaryId block:^(BmobObject *object,NSError *error){
         if (!error) {
             if (object) {
-                BmobObject *object = [BmobObject objectWithoutDatatWithClassName:object.className objectId:object.objectId];
-                [object setObject:anniversaries.anniversaryName forKey:@"anniversaryName" ];
-                [object setObject:anniversaries.dueDate forKey:@"dueDate"];
-                [object updateInBackground];
-//                [object setObject:anniversaries.timeFromNow forKey:@"timeFromNow" ];
-//                [object setObject:[NSNumber numberWithBool:anniversaries.isDue] forKey:@"anniversaryIsDue"];
+                BmobObject *object1 = [BmobObject objectWithoutDatatWithClassName:object.className objectId:object.objectId];
+                [object1 setObject:anniversaries.anniversaryName forKey:@"anniversaryName" ];
+                [object1 setObject:anniversaries.dueDate forKey:@"dueDate"];
+                [object1 updateInBackground];
+//                [object1 setObject:anniversaries.timeFromNow forKey:@"timeFromNow" ];
+//                [object1 setObject:[NSNumber numberWithBool:anniversaries.isDue] forKey:@"anniversaryIsDue"];
 
             }
         }else{
@@ -55,7 +55,7 @@
                 [self editAnniversaryData:indexPath allAnniversaries:anniversaryArray];
                 NSLog(@"%d",i);
             }else{
-                [ProgressHUD showError:@"编辑出错，请重试"];
+                [ProgressHUD showError:@"修改出错，请重试"];
             }
             NSLog(@"-修改出错 %@",error);
         }

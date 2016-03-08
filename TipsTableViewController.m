@@ -49,14 +49,14 @@
 - (void)isTipOrAnni{
     if (!_tipAndAnni) {
         _tipAndAnni = !_tipAndAnni;
-//        [self getAnniversaryData];
+        //        [self getAnniversaryData];
         [self.tableView reloadData];
     }else{
         _tipAndAnni = !_tipAndAnni;
-//        [self getTipsData];
+        //        [self getTipsData];
         [self.tableView reloadData];
     }
-
+    
     NSLog(@"%@",[NSNumber numberWithBool:_tipAndAnni]);
 }
 
@@ -66,21 +66,21 @@
 - (void)getTipsData{
     BmobQuery *query = [BmobQuery queryWithClassName:@"Tips"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error){
-    
+        
         if (error != nil) {
             [ProgressHUD showError:@"无网络"];
             NSLog(@"%@",error);
         }else{
-        for (BmobObject *obj in array) {
-            TipsModel *tips = [[TipsModel alloc]init];
-            tips.tipsName = [obj objectForKey:@"tipsName"];
-            tips.isCompleted = [[obj objectForKey:@"tipsIsCompleted"] boolValue];
-            tips.needToRemind = [[obj objectForKey:@"tipsNeedToRemind"] boolValue];
-            tips.dueDate = [obj objectForKey:@"dueDate"];
-            tips.tipsId = [obj objectForKey:@"objectId"];
-            [_tipsArray addObject:tips];
-            
-        }
+            for (BmobObject *obj in array) {
+                TipsModel *tips = [[TipsModel alloc]init];
+                tips.tipsName = [obj objectForKey:@"tipsName"];
+                tips.isCompleted = [[obj objectForKey:@"tipsIsCompleted"] boolValue];
+                tips.needToRemind = [[obj objectForKey:@"tipsNeedToRemind"] boolValue];
+                tips.dueDate = [obj objectForKey:@"dueDate"];
+                tips.tipsId = [obj objectForKey:@"objectId"];
+                [_tipsArray addObject:tips];
+                
+            }
         }
         [self.tableView reloadData];
         //延时1秒消失
@@ -106,8 +106,8 @@
                 anniversary.anniversaryName = [obj objectForKey:@"anniversaryName"];
                 anniversary.dueDate = [obj objectForKey:@"dueDate"];
                 anniversary.anniversaryId = [obj objectForKey:@"objectId"];
-//              anniversary.isDue = [[obj objectForKey:@"anniversaryIsDue"]boolValue];
-//              anniversary.timeFromNow = [obj objectForKey:@"timeFromNow"];
+                //              anniversary.isDue = [[obj objectForKey:@"anniversaryIsDue"]boolValue];
+                //              anniversary.timeFromNow = [obj objectForKey:@"timeFromNow"];
                 [_anniversaryArray addObject:anniversary];
                 
             }
@@ -131,25 +131,25 @@
     [super viewDidLoad];
     [self tipsArray];
     [self anniversaryArray];
-//    [self getNewArray];
+    //    [self getNewArray];
     [self getTipsData];
     [self getAnniversaryData];
     [self.segmentOfTipsAndAnni addTarget:self action:@selector(isTipOrAnni) forControlEvents:UIControlEventValueChanged];
     
     
-
+    
 }
 
 
 //用来临时往服务器里面添加数据…
 - (void)getNewArray{
-//    TipsModel *tip1 = [[TipsModel alloc]init];
-//    tip1.tipsName = @"这是一个提醒";
-//    tip1.dueDate = [NSDate date];
-//    tip1.isCompleted = NO;
-//    tip1.needToRemind = NO;
-//    [self.tipsArray addObject:tip1];
-//    [TipsModel saveTipsArray:_tipsArray];
+    //    TipsModel *tip1 = [[TipsModel alloc]init];
+    //    tip1.tipsName = @"这是一个提醒";
+    //    tip1.dueDate = [NSDate date];
+    //    tip1.isCompleted = NO;
+    //    tip1.needToRemind = NO;
+    //    [self.tipsArray addObject:tip1];
+    //    [TipsModel saveTipsArray:_tipsArray];
     
     AnniversaryModel *anni1 = [[AnniversaryModel alloc]init];
     anni1.dueDate = [[NSDate alloc]initWithTimeIntervalSinceReferenceDate:400000000];
@@ -193,8 +193,8 @@
         
         return _tipsArray.count;
     }else{
-
-    return [_anniversaryArray count];
+        
+        return [_anniversaryArray count];
     }
 }
 
@@ -244,55 +244,55 @@
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             return cell;
         }
-        }else{
-            //显示倒数日时
-            static NSString *reuseID = @"AnniversaryCell";
-            AnniversaryCell *cell = (AnniversaryCell *)[tableView dequeueReusableCellWithIdentifier:reuseID];
-            if (cell == nil) {
-                cell = (AnniversaryCell *)[[[NSBundle mainBundle] loadNibNamed:@"AnniversaryCell" owner:self options:nil]lastObject];
-            }
-            
-            //取出模型进行操作
-            AnniversaryModel *model1 = _anniversaryArray[indexPath.row];
-            
-            
-            //程序内判断日期到了没有
-            model1.isDue = [self whetherDue:model1.dueDate];
-            //判断距今还有多少天,如果就是今天，就更改样式
-            model1.timeFromNow = [self getUTCFormateDate:[self stringFromDate:model1.dueDate]];
-            NSString *nameWithTag = [[NSString alloc]init];
-            if ([model1.timeFromNow isEqualToString:@"今天"]) {
-                nameWithTag = [model1.anniversaryName stringByAppendingString:@"就是"];
-                cell.days.text = @"✌️";
-            }else{
-                //判断是到了还是没到，在日期后面加上已经/还有
-                if (model1.isDue) {
-                    nameWithTag = [model1.anniversaryName stringByAppendingString:@"已经"];
-                }else{
-                    nameWithTag = [model1.anniversaryName stringByAppendingString:@"还有"];
-                }
-            }
-            if (indexPath.row == 0) {
-                [cell.editButton setHidden:YES];
-            }else{
-                [cell.topBar setHidden:YES];
-            }
-            cell.anniversaryName.text = nameWithTag;
-            cell.dueDate.text = [self stringFromDate:model1.dueDate];
-            cell.delegate = self;
-            cell.editButton.tag = indexPath.row;
-            cell.timeFromNow.text = model1.timeFromNow;
-            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-            tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-            tableView.scrollEnabled = YES;
-            
-            return cell;
-
+    }else{
+        //显示倒数日时
+        static NSString *reuseID = @"AnniversaryCell";
+        AnniversaryCell *cell = (AnniversaryCell *)[tableView dequeueReusableCellWithIdentifier:reuseID];
+        if (cell == nil) {
+            cell = (AnniversaryCell *)[[[NSBundle mainBundle] loadNibNamed:@"AnniversaryCell" owner:self options:nil]lastObject];
         }
+        
+        //取出模型进行操作
+        AnniversaryModel *model1 = _anniversaryArray[indexPath.row];
+        
+        
+        //程序内判断日期到了没有
+        model1.isDue = [self whetherDue:model1.dueDate];
+        //判断距今还有多少天,如果就是今天，就更改样式
+        model1.timeFromNow = [self getUTCFormateDate:[self stringFromDate:model1.dueDate]];
+        NSString *nameWithTag = [[NSString alloc]init];
+        if ([model1.timeFromNow isEqualToString:@"今天"]) {
+            nameWithTag = [model1.anniversaryName stringByAppendingString:@"就是"];
+            cell.days.text = @"✌️";
+        }else{
+            //判断是到了还是没到，在日期后面加上已经/还有
+            if (model1.isDue) {
+                nameWithTag = [model1.anniversaryName stringByAppendingString:@"已经"];
+            }else{
+                nameWithTag = [model1.anniversaryName stringByAppendingString:@"还有"];
+            }
+        }
+        if (indexPath.row == 0) {
+            [cell.editButton setHidden:YES];
+        }else{
+            [cell.topBar setHidden:YES];
+        }
+        cell.anniversaryName.text = nameWithTag;
+        cell.dueDate.text = [self stringFromDate:model1.dueDate];
+        cell.delegate = self;
+        cell.editButton.tag = indexPath.row;
+        cell.timeFromNow.text = model1.timeFromNow;
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        tableView.scrollEnabled = YES;
+        
+        return cell;
+        
+    }
     
-
     
-
+    
+    
 }
 
 
@@ -312,8 +312,8 @@
             [self.tableView reloadData];
         }
     }
-
-
+    
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -326,7 +326,7 @@
     }else{
         return 100;
     }
-
+    
 }
 
 
@@ -345,7 +345,7 @@
             return YES;
         }
     }
-
+    
 }
 
 
@@ -364,10 +364,10 @@
             [tableView reloadData];
         }
     }
-
+    
 }
 
-#pragma mark - 添加/修改内部数据的代理方法
+#pragma mark - 添加/修改/删除内部数据的代理方法
 
 
 //AddTip
@@ -385,13 +385,23 @@
     NSInteger index = [_tipsArray indexOfObject:tips];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [TipsModel editTipsData:indexPath allTips:_tipsArray];
-//    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    //    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    [self.tableView reloadData];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+//DeleteTip
+- (void)AddEditViewControllerForTip:(AddEditViewController *)controller didDeleteTips:(TipsModel *)tips{
+    NSInteger index = [_tipsArray indexOfObject:tips];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    [TipsModel deleteTipsData:indexPath allTips:_tipsArray];
+    [_tipsArray removeObjectAtIndex:indexPath.row];
     [self.tableView reloadData];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 //AddAnniversary
-- (void)AddEditViewControllerForAnniversay:(AddEditViewController *)controller didFinishAddingAnniversary:(AnniversaryModel *)anniversary{
+- (void)AddEditViewControllerForAnniversary:(AddEditViewController *)controller didFinishAddingAnniversary:(AnniversaryModel *)anniversary{
     //判断日期到了没有
     anniversary.isDue = [self whetherDue:anniversary.dueDate];
     //判断距今多少天
@@ -406,17 +416,27 @@
 
 //EditAnniversary
 - (void)AddEditViewControllerForAnniversary:(AddEditViewController *)controller didFinishEditingAnniversary:(AnniversaryModel *)anniversary{
+    NSInteger index = [_anniversaryArray indexOfObject:anniversary];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     //判断日期到了没有
     anniversary.isDue = [self whetherDue:anniversary.dueDate];
     //判断距今多少天
     anniversary.timeFromNow = [self getUTCFormateDate:[self stringFromDate:anniversary.dueDate]];
-    NSInteger index = [_anniversaryArray indexOfObject:anniversary];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [AnniversaryModel editAnniversaryData:indexPath allAnniversaries:_anniversaryArray];
     //    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     [self.tableView reloadData];
     [self dismissViewControllerAnimated:YES completion:nil];
     
+}
+
+//DeleteAnniversary
+- (void)AddEditViewControllerForAnniversary:(AddEditViewController *)controller didDeleteAnniversary:(AnniversaryModel *)anniversary{
+    NSInteger index = [_anniversaryArray indexOfObject:anniversary];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    [AnniversaryModel deleteAnniversaryData:indexPath allAnniversaries:_anniversaryArray];
+    [_anniversaryArray removeObjectAtIndex:indexPath.row];
+    [self.tableView reloadData];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - 判断一个时间距今多少天/把日期转换为字符串
@@ -449,7 +469,7 @@
     NSString *dateContent;
     if(days > 0){
         dateContent = [NSString stringWithFormat:@"%@%i",@"   ",days];
-    //    NSString *dateContent=[[NSString alloc] initWithFormat:@"%i天%i小时",days,hours];
+        //    NSString *dateContent=[[NSString alloc] initWithFormat:@"%i天%i小时",days,hours];
     }else if(days < 0){
         days = -days;
         dateContent = [NSString stringWithFormat:@"%@%i",@"   ",days];
@@ -515,7 +535,7 @@
             
         }
     }
-
+    
     
 }
 

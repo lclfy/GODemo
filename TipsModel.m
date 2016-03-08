@@ -53,7 +53,7 @@
                 [self editTipsData:indexPath allTips:tipsArray];
                 NSLog(@"%d",i);
             }else{
-                [ProgressHUD showError:@"编辑出错，请重试"];
+                [ProgressHUD showError:@"修改出错，请重试"];
             }
             NSLog(@"-修改出错 %@",error);
         }

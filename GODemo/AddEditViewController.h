@@ -21,9 +21,13 @@
 
 - (void)AddEditViewControllerForTip:(AddEditViewController *)controller didFinishAddingTips:(TipsModel *)tips;
 
+- (void)AddEditViewControllerForTip:(AddEditViewController *)controller didDeleteTips:(TipsModel *)tips;
+
 - (void)AddEditViewControllerForAnniversary:(AddEditViewController *)controller didFinishEditingAnniversary:(AnniversaryModel *)anniversary;
 
-- (void)AddEditViewControllerForAnniversay:(AddEditViewController *)controller didFinishAddingAnniversary:(AnniversaryModel *)anniversary;
+- (void)AddEditViewControllerForAnniversary:(AddEditViewController *)controller didFinishAddingAnniversary:(AnniversaryModel *)anniversary;
+
+- (void)AddEditViewControllerForAnniversary:(AddEditViewController *)controller didDeleteAnniversary:(AnniversaryModel *)anniversary;
 
 @end
 
@@ -35,10 +39,12 @@
 @property (nonatomic,strong) TipsModel *tipsToEdit;
 @property (nonatomic,strong) AnniversaryModel *anniversaryToEdit;
 
-//是否提醒的开关，和完成按钮
+//是否提醒的开关，完成按钮和删除按钮
 @property (weak, nonatomic) IBOutlet UISwitch *remindSwitchControl;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneBtn;
+
+@property (strong, nonatomic) IBOutlet UIButton *deleteBtn;
 
 //判断是提醒还是纪念日
 @property (nonatomic,assign) BOOL tipAndAnni;
