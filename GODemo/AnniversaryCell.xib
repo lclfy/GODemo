@@ -43,11 +43,11 @@
                         <rect key="frame" x="177" y="15" width="66" height="59"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.97647058823529409" green="0.50588235294117645" blue="0.51764705882352935" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="_anniversary_sideBar" translatesAutoresizingMaskIntoConstraints="NO" id="PPb-S7-ccc">
-                        <rect key="frame" x="4" y="2" width="313" height="3"/>
+                        <rect key="frame" x="4" y="2" width="313" height="6"/>
                         <animations/>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nzj-en-Pqy">
@@ -59,7 +59,7 @@
                         </connections>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="_anniversary_sideBar" translatesAutoresizingMaskIntoConstraints="NO" id="X3d-bR-ilz">
-                        <rect key="frame" x="4" y="92" width="313" height="3"/>
+                        <rect key="frame" x="4" y="89" width="313" height="6"/>
                         <animations/>
                     </imageView>
                 </subviews>
@@ -102,6 +102,7 @@
             <animations/>
             <connections>
                 <outlet property="anniversaryName" destination="02f-Mx-LTv" id="zPH-AH-xoD"/>
+                <outlet property="days" destination="a5U-Pd-91G" id="m3n-mD-D5t"/>
                 <outlet property="dueDate" destination="fiE-mg-twi" id="CMh-ug-H8C"/>
                 <outlet property="editButton" destination="Nzj-en-Pqy" id="aFB-Jz-NTg"/>
                 <outlet property="timeFromNow" destination="7J5-JJ-TgA" id="sW0-LF-Rnr"/>
@@ -113,6 +114,6 @@
     <resources>
         <image name="_anniversary_Cell_Rect" width="375" height="100"/>
         <image name="_anniversary_Edit_Btn" width="75" height="75"/>
-        <image name="_anniversary_sideBar" width="250" height="3"/>
+        <image name="_anniversary_sideBar" width="374" height="6"/>
     </resources>
 </document>

@@ -28,6 +28,9 @@
 @property (strong, nonatomic) IBOutlet UIButton *editButton;
 @property (strong, nonatomic) IBOutlet UIImageView *topBar;
 
+@property (strong, nonatomic) IBOutlet UILabel *days;
+
+
 @property (weak,nonatomic) id delegate;
 
 

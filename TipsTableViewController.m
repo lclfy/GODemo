@@ -104,10 +104,10 @@
             for (BmobObject *obj in array) {
                 AnniversaryModel *anniversary = [[AnniversaryModel alloc]init];
                 anniversary.anniversaryName = [obj objectForKey:@"anniversaryName"];
-                anniversary.isDue = [[obj objectForKey:@"anniversaryIsDue"]boolValue];
                 anniversary.dueDate = [obj objectForKey:@"dueDate"];
                 anniversary.anniversaryId = [obj objectForKey:@"objectId"];
-                anniversary.timeFromNow = [obj objectForKey:@"timeFromNow"];
+//              anniversary.isDue = [[obj objectForKey:@"anniversaryIsDue"]boolValue];
+//              anniversary.timeFromNow = [obj objectForKey:@"timeFromNow"];
                 [_anniversaryArray addObject:anniversary];
                 
             }
@@ -251,12 +251,26 @@
             if (cell == nil) {
                 cell = (AnniversaryCell *)[[[NSBundle mainBundle] loadNibNamed:@"AnniversaryCell" owner:self options:nil]lastObject];
             }
+            
+            //取出模型进行操作
             AnniversaryModel *model1 = _anniversaryArray[indexPath.row];
+            
+            
+            //程序内判断日期到了没有
+            model1.isDue = [self whetherDue:model1.dueDate];
+            //判断距今还有多少天,如果就是今天，就更改样式
+            model1.timeFromNow = [self getUTCFormateDate:[self stringFromDate:model1.dueDate]];
             NSString *nameWithTag = [[NSString alloc]init];
-            if (model1.isDue) {
-                nameWithTag = [model1.anniversaryName stringByAppendingString:@"已经"];
+            if ([model1.timeFromNow isEqualToString:@"今天"]) {
+                nameWithTag = [model1.anniversaryName stringByAppendingString:@"就是"];
+                cell.days.text = @"✌️";
             }else{
-                nameWithTag = [model1.anniversaryName stringByAppendingString:@"还有"];
+                //判断是到了还是没到，在日期后面加上已经/还有
+                if (model1.isDue) {
+                    nameWithTag = [model1.anniversaryName stringByAppendingString:@"已经"];
+                }else{
+                    nameWithTag = [model1.anniversaryName stringByAppendingString:@"还有"];
+                }
             }
             if (indexPath.row == 0) {
                 [cell.editButton setHidden:YES];
@@ -378,13 +392,8 @@
 
 //AddAnniversary
 - (void)AddEditViewControllerForAnniversay:(AddEditViewController *)controller didFinishAddingAnniversary:(AnniversaryModel *)anniversary{
-    NSDate *now = [NSDate date];
-    if ([anniversary.dueDate laterDate:now] == anniversary.dueDate ) {
-        //如果更晚的是dueDate，就说明还没有到期，就返回NO
-        anniversary.isDue = NO;
-    }else{
-        anniversary.isDue = YES;
-    }
+    //判断日期到了没有
+    anniversary.isDue = [self whetherDue:anniversary.dueDate];
     //判断距今多少天
     anniversary.timeFromNow = [self getUTCFormateDate:[self stringFromDate:anniversary.dueDate]];
     
@@ -397,13 +406,8 @@
 
 //EditAnniversary
 - (void)AddEditViewControllerForAnniversary:(AddEditViewController *)controller didFinishEditingAnniversary:(AnniversaryModel *)anniversary{
-    NSDate *now = [NSDate date];
-    if ([anniversary.dueDate laterDate:now] == anniversary.dueDate ) {
-        //如果更晚的是dueDate，就说明还没有到期，就返回NO
-        anniversary.isDue = NO;
-    }else{
-        anniversary.isDue = YES;
-    }
+    //判断日期到了没有
+    anniversary.isDue = [self whetherDue:anniversary.dueDate];
     //判断距今多少天
     anniversary.timeFromNow = [self getUTCFormateDate:[self stringFromDate:anniversary.dueDate]];
     NSInteger index = [_anniversaryArray indexOfObject:anniversary];
@@ -416,6 +420,17 @@
 }
 
 #pragma mark - 判断一个时间距今多少天/把日期转换为字符串
+
+- (BOOL)whetherDue :(NSDate *)date{
+    NSDate *now = [NSDate date];
+    if ([date laterDate:now] == date ) {
+        //如果更晚的是dueDate，就说明还没有到期，就返回NO
+        return NO;
+    }else {
+        return YES;
+    }
+}
+
 - (NSString *)getUTCFormateDate:(NSString *)newsDate
 {
     //    newsDate = @"2013-08-09 17:01";
@@ -438,6 +453,8 @@
     }else if(days < 0){
         days = -days;
         dateContent = [NSString stringWithFormat:@"%@%i",@"   ",days];
+    }else if(days == 0){
+        dateContent = [NSString stringWithFormat:@"今天"];
     }
     return dateContent;
 }
