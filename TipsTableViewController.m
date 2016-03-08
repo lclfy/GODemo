@@ -135,7 +135,7 @@
     [self getTipsData];
     [self getAnniversaryData];
     [self.segmentOfTipsAndAnni addTarget:self action:@selector(isTipOrAnni) forControlEvents:UIControlEventValueChanged];
-    
+//    [self loadShowEveryTipsView];
     
     
 }
@@ -546,6 +546,14 @@
     NSLog(@"11111");
     
 }
+
+#pragma mark - 显示/隐藏已完成的项目
+
+//- (void)loadShowEveryTipsView{
+//    UIView *view = [[[NSBundle mainBundle]loadNibNamed:@"ShowEveryTips" owner:self options:nil]lastObject];
+//    
+//    [self.view addSubview:view];
+//}
 
 
 

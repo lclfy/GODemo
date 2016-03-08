@@ -38,6 +38,7 @@
 		20E785E51C886C8600715BDD /* AnniversaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E785E31C886C8600715BDD /* AnniversaryCell.m */; settings = {ASSET_TAGS = (); }; };
 		20E785E61C886C8600715BDD /* AnniversaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20E785E41C886C8600715BDD /* AnniversaryCell.xib */; settings = {ASSET_TAGS = (); }; };
 		20E785E91C8885FB00715BDD /* AnniversaryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E785E81C8885FB00715BDD /* AnniversaryModel.m */; settings = {ASSET_TAGS = (); }; };
+		20E785EB1C8F1E9500715BDD /* ShowEveryTips.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20E785EA1C8F1E9500715BDD /* ShowEveryTips.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		20E785E41C886C8600715BDD /* AnniversaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnniversaryCell.xib; sourceTree = "<group>"; };
 		20E785E71C8885FB00715BDD /* AnniversaryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnniversaryModel.h; sourceTree = "<group>"; };
 		20E785E81C8885FB00715BDD /* AnniversaryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnniversaryModel.m; sourceTree = "<group>"; };
+		20E785EA1C8F1E9500715BDD /* ShowEveryTips.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowEveryTips.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +274,7 @@
 				20E785E21C886C8600715BDD /* AnniversaryCell.h */,
 				20E785E31C886C8600715BDD /* AnniversaryCell.m */,
 				20E785E41C886C8600715BDD /* AnniversaryCell.xib */,
+				20E785EA1C8F1E9500715BDD /* ShowEveryTips.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				20E785E61C886C8600715BDD /* AnniversaryCell.xib in Resources */,
 				20464C2C1C75C43600A5E262 /* Main.storyboard in Resources */,
 				2028906B1C873079005BF76C /* ProgressHUD.bundle in Resources */,
+				20E785EB1C8F1E9500715BDD /* ShowEveryTips.xib in Resources */,
 				202890601C871FB4005BF76C /* NoTipsViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -192,11 +192,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="添加提醒" id="n1G-eB-kep">
                         <barButtonItem key="leftBarButtonItem" title="取消" id="m2t-3C-XrC">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="cancelBtn:" destination="B8r-t8-zea" id="YX1-Bc-gAR"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" title="完成" id="bmY-GE-FkJ">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="doneBtn:" destination="B8r-t8-zea" id="5Jz-vf-yQO"/>
                             </connections>
@@ -272,8 +274,10 @@
                                 <segment title="提醒"/>
                                 <segment title="纪念日"/>
                             </segments>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" title="添加" id="A0O-em-Szf">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="T9a-Ja-b9z" kind="presentation" identifier="Add" id="oTn-pT-79T"/>
                             </connections>
@@ -293,10 +297,15 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dnr-CM-Tis" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nbs-Yd-FpP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Nbs-Yd-FpP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textShadowColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -312,10 +321,14 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="T9a-Ja-b9z" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0GJ-cO-8cv">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="0GJ-cO-8cv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

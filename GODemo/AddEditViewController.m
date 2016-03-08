@@ -155,7 +155,7 @@
             NSLog(@"%@",_textField.text);
         }
     }else{
-        if (_tipsToEdit != nil) {
+        if (_anniversaryToEdit != nil) {
             self.anniversaryToEdit.anniversaryName = _textField.text;
             NSLog(@"edit-anni");
         }else{
