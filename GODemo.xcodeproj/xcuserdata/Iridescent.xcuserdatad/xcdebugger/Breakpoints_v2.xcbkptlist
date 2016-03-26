@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TipsTableViewController.m"
-            timestampString = "479125046.194045"
+            timestampString = "479144570.441702"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "384"
-            endingLineNumber = "384"
+            startingLineNumber = "380"
+            endingLineNumber = "380"
             landmarkName = "-AddEditViewControllerForTip:didFinishEditingTips:"
             landmarkType = "5">
          </BreakpointContent>
@@ -116,11 +116,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TipsTableViewController.m"
-            timestampString = "479129166.770028"
+            timestampString = "479144570.441702"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "405"
-            endingLineNumber = "405"
+            startingLineNumber = "401"
+            endingLineNumber = "401"
             landmarkName = "-AddEditViewControllerForAnniversary:didFinishAddingAnniversary:"
             landmarkType = "5">
          </BreakpointContent>
@@ -164,11 +164,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TipsTableViewController.m"
-            timestampString = "479143970.936564"
+            timestampString = "479144570.441702"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "420"
-            endingLineNumber = "420"
+            startingLineNumber = "416"
+            endingLineNumber = "416"
             landmarkName = "-AddEditViewControllerForAnniversary:didFinishEditingAnniversary:"
             landmarkType = "5">
          </BreakpointContent>
@@ -218,6 +218,38 @@
             startingLineNumber = "151"
             endingLineNumber = "151"
             landmarkName = "-textChanged"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MainAlbumViewController.m"
+            timestampString = "480441765.649046"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "-addPhotoButton:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MainAlbumViewController.m"
+            timestampString = "480441765.649046"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "-addPhotoButton:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -34,6 +34,11 @@
 		20464C751C75DBC100A5E262 /* BmobSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20464C741C75DBC100A5E262 /* BmobSDK.framework */; settings = {ASSET_TAGS = (); }; };
 		20464C7E1C75DD4900A5E262 /* TipsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20464C7D1C75DD4900A5E262 /* TipsModel.m */; settings = {ASSET_TAGS = (); }; };
 		20464C841C75FA9A00A5E262 /* TipsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20464C831C75FA9A00A5E262 /* TipsTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		205BB3E21C92A04100063F78 /* MainAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 205BB3E11C92A04100063F78 /* MainAlbumViewController.m */; settings = {ASSET_TAGS = (); }; };
+		205BB3E51C92A05900063F78 /* MainAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 205BB3E41C92A05900063F78 /* MainAlbumCell.m */; settings = {ASSET_TAGS = (); }; };
+		205BB3E81C92A06800063F78 /* MainAlbumHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 205BB3E71C92A06800063F78 /* MainAlbumHeaderView.m */; settings = {ASSET_TAGS = (); }; };
+		205BB3EB1C92A07D00063F78 /* MainAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 205BB3EA1C92A07D00063F78 /* MainAlbumModel.m */; settings = {ASSET_TAGS = (); }; };
+		207521141C9A80A9001BD8E2 /* MainAblumFrameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 207521131C9A80A9001BD8E2 /* MainAblumFrameModel.m */; settings = {ASSET_TAGS = (); }; };
 		20D9C9C81C77338000A0A017 /* AddEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D9C9C71C77338000A0A017 /* AddEditViewController.m */; settings = {ASSET_TAGS = (); }; };
 		20E785E51C886C8600715BDD /* AnniversaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E785E31C886C8600715BDD /* AnniversaryCell.m */; settings = {ASSET_TAGS = (); }; };
 		20E785E61C886C8600715BDD /* AnniversaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20E785E41C886C8600715BDD /* AnniversaryCell.xib */; settings = {ASSET_TAGS = (); }; };
@@ -98,6 +103,16 @@
 		20464C7D1C75DD4900A5E262 /* TipsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TipsModel.m; path = ../TipsModel.m; sourceTree = "<group>"; };
 		20464C821C75FA9A00A5E262 /* TipsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TipsTableViewController.h; path = ../TipsTableViewController.h; sourceTree = "<group>"; };
 		20464C831C75FA9A00A5E262 /* TipsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TipsTableViewController.m; path = ../TipsTableViewController.m; sourceTree = "<group>"; };
+		205BB3E01C92A04100063F78 /* MainAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainAlbumViewController.h; path = ../MainAlbumViewController.h; sourceTree = "<group>"; };
+		205BB3E11C92A04100063F78 /* MainAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainAlbumViewController.m; path = ../MainAlbumViewController.m; sourceTree = "<group>"; };
+		205BB3E31C92A05900063F78 /* MainAlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainAlbumCell.h; path = ../MainAlbumCell.h; sourceTree = "<group>"; };
+		205BB3E41C92A05900063F78 /* MainAlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainAlbumCell.m; path = ../MainAlbumCell.m; sourceTree = "<group>"; };
+		205BB3E61C92A06800063F78 /* MainAlbumHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainAlbumHeaderView.h; path = ../MainAlbumHeaderView.h; sourceTree = "<group>"; };
+		205BB3E71C92A06800063F78 /* MainAlbumHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainAlbumHeaderView.m; path = ../MainAlbumHeaderView.m; sourceTree = "<group>"; };
+		205BB3E91C92A07D00063F78 /* MainAlbumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainAlbumModel.h; path = ../MainAlbumModel.h; sourceTree = "<group>"; };
+		205BB3EA1C92A07D00063F78 /* MainAlbumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainAlbumModel.m; path = ../MainAlbumModel.m; sourceTree = "<group>"; };
+		207521121C9A80A9001BD8E2 /* MainAblumFrameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainAblumFrameModel.h; sourceTree = "<group>"; };
+		207521131C9A80A9001BD8E2 /* MainAblumFrameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainAblumFrameModel.m; sourceTree = "<group>"; };
 		20D9C9C61C77338000A0A017 /* AddEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEditViewController.h; sourceTree = "<group>"; };
 		20D9C9C71C77338000A0A017 /* AddEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEditViewController.m; sourceTree = "<group>"; };
 		20E785E21C886C8600715BDD /* AnniversaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnniversaryCell.h; sourceTree = "<group>"; };
@@ -149,6 +164,7 @@
 		202890611C8728B3005BF76C /* GoDemo */ = {
 			isa = PBXGroup;
 			children = (
+				20464C561C75C4A000A5E262 /* Others */,
 				20464C201C75C43600A5E262 /* GODemo */,
 			);
 			name = GoDemo;
@@ -160,7 +176,6 @@
 				20464C581C75D6A100A5E262 /* Models */,
 				20464C571C75D69700A5E262 /* Views */,
 				20464C541C75C48100A5E262 /* Controllers */,
-				20464C561C75C4A000A5E262 /* Others */,
 			);
 			name = "提醒纪念日界面";
 			sourceTree = "<group>";
@@ -198,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				202890631C8728F8005BF76C /* HUD */,
+				205BB3D31C929D2500063F78 /* 相册界面 */,
 				202890621C8728E0005BF76C /* 提醒纪念日界面 */,
 				20464C551C75C49600A5E262 /* AppDelegate */,
 				20464C591C75D6E900A5E262 /* Frameworks */,
@@ -263,6 +279,7 @@
 				20464C2A1C75C43600A5E262 /* Main.storyboard */,
 			);
 			name = Others;
+			path = GODemo;
 			sourceTree = "<group>";
 		};
 		20464C571C75D69700A5E262 /* Views */ = {
@@ -309,6 +326,47 @@
 				20464C5C1C75D8A600A5E262 /* CoreLocation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		205BB3D31C929D2500063F78 /* 相册界面 */ = {
+			isa = PBXGroup;
+			children = (
+				205BB3D61C929D5000063F78 /* Controllers */,
+				205BB3D51C929D4A00063F78 /* Views */,
+				205BB3D41C929D4000063F78 /* Models */,
+			);
+			name = "相册界面";
+			sourceTree = "<group>";
+		};
+		205BB3D41C929D4000063F78 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				205BB3E91C92A07D00063F78 /* MainAlbumModel.h */,
+				207521121C9A80A9001BD8E2 /* MainAblumFrameModel.h */,
+				207521131C9A80A9001BD8E2 /* MainAblumFrameModel.m */,
+				205BB3EA1C92A07D00063F78 /* MainAlbumModel.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		205BB3D51C929D4A00063F78 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				205BB3E31C92A05900063F78 /* MainAlbumCell.h */,
+				205BB3E41C92A05900063F78 /* MainAlbumCell.m */,
+				205BB3E61C92A06800063F78 /* MainAlbumHeaderView.h */,
+				205BB3E71C92A06800063F78 /* MainAlbumHeaderView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		205BB3D61C929D5000063F78 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				205BB3E01C92A04100063F78 /* MainAlbumViewController.h */,
+				205BB3E11C92A04100063F78 /* MainAlbumViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -452,12 +510,17 @@
 				2028905F1C871FB4005BF76C /* NoTipsViewCell.m in Sources */,
 				20464C291C75C43600A5E262 /* Tab1ViewController.m in Sources */,
 				20464C261C75C43600A5E262 /* AppDelegate.m in Sources */,
+				205BB3EB1C92A07D00063F78 /* MainAlbumModel.m in Sources */,
+				205BB3E51C92A05900063F78 /* MainAlbumCell.m in Sources */,
 				20E785E91C8885FB00715BDD /* AnniversaryModel.m in Sources */,
 				20D9C9C81C77338000A0A017 /* AddEditViewController.m in Sources */,
 				20464C231C75C43600A5E262 /* main.m in Sources */,
+				205BB3E81C92A06800063F78 /* MainAlbumHeaderView.m in Sources */,
+				205BB3E21C92A04100063F78 /* MainAlbumViewController.m in Sources */,
 				20464C841C75FA9A00A5E262 /* TipsTableViewController.m in Sources */,
 				2028906E1C87307D005BF76C /* ProgressHUD.m in Sources */,
 				20464C7E1C75DD4900A5E262 /* TipsModel.m in Sources */,
+				207521141C9A80A9001BD8E2 /* MainAblumFrameModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

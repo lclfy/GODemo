@@ -339,11 +339,7 @@
             return NO;
         }
     }else{
-        if (indexPath.row == 0) {
-            return NO;
-        }else{
-            return YES;
-        }
+        return NO;
     }
     
 }
